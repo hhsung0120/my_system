@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="/common/fragment::head"/>
+<body>
+<div class="container">
+<!--    <div class="header">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">About</a></li>
+                <li role="presentation"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">개발자 한희성</h3>
+    </div>-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+                    <li><a href="../navbar-static-top/">Static top</a></li>
+                    <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+
+    <div class="jumbotron">
+        <h1>introduction</h1>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-6">
+            <h4 class="title">하이 하고 있는 이모티콘 about me</h4>
+            <div>
+                <div class="inline-block width-25">introduction</div>
+                <div class="inline-block">
+                    <ul>
+                        <li>안녕하세요 몇년차 한희성 입니다.</li>
+                        <li>반갑습니다.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="inline-block width-25">concat & channel</div>
+                <div class="inline-block">
+                    <ul>
+                        <li>email</li>
+                        <li>github</li>
+                        <li>blog</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <h4 class="title">망치그림 skill</h4>
+            <div>
+                <div class="inline-block width-25">backend</div>
+                <div class="inline-block">
+                    <ul>
+                        <li>java</li>
+                        <li>springboot</li>
+                        <li>jpa</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="inline-block width-25">devops</div>
+                <div class="inline-block">
+                    <ul>
+                        <li>aws</li>
+                        <li>mysql</li>
+                        <li>jenkins???</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="inline-block width-25">frontend</div>
+                <div class="inline-block">
+                    <ul>
+                        <li>html5</li>
+                        <li>react</li>
+                        <li>vue.js</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="inline-block width-25">형상관리 ?  collraboration</div>
+                <div class="inline-block">
+                    <ul>
+                        <li>jira</li>
+                        <li>confluance</li>
+                        <li>slack</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h4 class="title">망치그림 skill</h4>
+            <div>
+                <div class="inline-block width-25">backend</div>
+                <div class="inline-block">
+                    <ul>
+                        <li>java</li>
+                        <li>springboot</li>
+                        <li>jpa</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="inline-block width-25">devops</div>
+                <div class="inline-block">
+                    <ul>
+                        <li>aws</li>
+                        <li>mysql</li>
+                        <li>jenkins???</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="inline-block width-25">frontend</div>
+                <div class="inline-block">
+                    <ul>
+                        <li>html5</li>
+                        <li>react</li>
+                        <li>vue.js</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="inline-block width-25">형상관리 ?  collraboration</div>
+                <div class="inline-block">
+                    <ul>
+                        <li>jira</li>
+                        <li>confluance</li>
+                        <li>slack</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:include="/common/fragment::footer"/>
+
+    <div class="col-md-6">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div> <!-- /container -->
+
+
+<div th:include="/common/fragment::commonScript"/>
+</body>
+</html>
