@@ -22,7 +22,8 @@ spring:
       hibernate:
         show-sql: true
         format_sql: true
-        ddl-auto: none
+        #ddl-auto: none
+        ddl-auto: create
 
   #DB configuration
   mybatis:
@@ -30,4 +31,4 @@ spring:
       map-underscore-to-camel-case: true
     mapper-locations:
       - mapper/*.xml
-    type-aliases-package: site.heeseong.*
+    type-aliases-package: io.system.heeseong.*
