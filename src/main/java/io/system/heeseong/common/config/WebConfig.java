@@ -16,7 +16,7 @@ public class WebConfig implements WebMvcConfigurer{
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         System.out.println(fileUploadPath);
         registry.addResourceHandler("/upload/**")
-                .addResourceLocations("file://"+fileUploadPath);
+                .addResourceLocations("file://"+"D\\:/upload/system/test.png");
     }
 	
 /*    // 인덱스 페이지 설정

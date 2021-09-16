@@ -36,7 +36,7 @@ public class BoardController {
         String returnData = new StringBuilder()
                 .append(request.getParameter("callback"))
                 .append("?callback_func=" + request.getParameter("callback_func"))
-                .append("&bNewLine=true&sFileName="+"test.png" + "&sFileURL=" + "file:///D:/upload/system/test.png")
+                .append("&bNewLine=true&sFileName="+"test.png" + "&sFileURL=" + "D:/upload/system/test.png")
                 .toString()
                 ;
 
