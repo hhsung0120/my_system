@@ -33,5 +33,7 @@ logging:
     rollingpolicy:
       max-history: 7
       max-file-size: 10MB
+
 path:
-  default-upload-path: D:${file.separator}upload${file.separator}system${file.separator}
+  web-access-path : /upload/**
+  default-upload-path: D:/upload/system/
