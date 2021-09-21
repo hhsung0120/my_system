@@ -1,10 +1,11 @@
 package io.system.heeseong.board.entity;
 
 import io.system.heeseong.common.entity.BaseEntity;
+import io.system.heeseong.common.entity.FileEntity;
 import io.system.heeseong.common.enumtype.BoardType;
-import io.system.heeseong.common.model.Files;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "board")
@@ -21,6 +22,9 @@ public class BoardEntity extends BaseEntity {
     private String title;
     private String content;
 
-    @JoinColumn(name = "fileIdx", insertable = false, updatable = false)
-    private Files file;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "file_idx")
+    private List<FileEntity> files;
+
+
 }

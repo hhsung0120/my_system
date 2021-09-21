@@ -3,6 +3,7 @@ package io.system.heeseong.common.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "file")
 public class FileEntity extends BaseEntity {
 
     @Id @Column(name = "file_idx")
