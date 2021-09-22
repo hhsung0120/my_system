@@ -15,13 +15,17 @@ public class BoardEntity extends BaseEntity {
     private Long idx;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private BoardType boardType;
 
-    private String boardCategory;
+    @OneToOne
+    @JoinColumn(name = "category_idx", nullable = false)
+    private BoardCategory boardCategory;
+
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private String content;
 
-    @ManyToOne
-    @JoinColumn(name = "file_idx")
-    private FileEntity files;
 }
