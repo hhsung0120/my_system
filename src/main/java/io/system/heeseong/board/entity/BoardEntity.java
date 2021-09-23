@@ -1,7 +1,6 @@
 package io.system.heeseong.board.entity;
 
 import io.system.heeseong.common.entity.BaseEntity;
-import io.system.heeseong.common.entity.FileEntity;
 import io.system.heeseong.common.enumtype.BoardType;
 
 import javax.persistence.*;
