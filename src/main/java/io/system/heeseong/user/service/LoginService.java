@@ -16,20 +16,8 @@ import java.util.List;
 public class LoginService implements UserDetailsService {
 
     @Override
-    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        log.info("userId {}", userId);
-
-        List<GrantedAuthority> roles = new ArrayList<>();
-        if ("user".equals(userId)) {
-            roles.add(new SimpleGrantedAuthority("ROLE_USER"));
-        } else if ("admin".equals(userId)) {
-            roles.add(new SimpleGrantedAuthority("ROLE_USER"));
-            roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        } else {
-          return null;
-        }
-
-        return new User(userId, userId, roles);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 
     public AccountUser getAccountUser(String userId, String password){
