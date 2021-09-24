@@ -44,7 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .exceptionHandling().accessDeniedPage("/login/denied")
             .and()
-                .authenticationProvider(customAuthenticationProvider);
+                .authenticationProvider(customAuthenticationProvider)
+            .headers()
+                .frameOptions().disable();
+
     }
 
     @Bean

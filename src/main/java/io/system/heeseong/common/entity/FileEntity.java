@@ -13,11 +13,18 @@ public class FileEntity extends BaseEntity {
     @Column(nullable = false)
     private String tableName;
 
+    @Column(nullable = false)
     private Long indexNumber; //해당 게시판의 idx
 
     @Column(nullable = false)
-    private String fileName;
+    private String originalFileName;
+
+    @Column(nullable = false)
+    private String uuidFileName;
 
     @Column(nullable = false)
     private String extension;
+
+    @Column(nullable = false)
+    private String filePath;
 }

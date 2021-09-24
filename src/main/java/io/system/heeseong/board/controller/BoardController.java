@@ -1,9 +1,8 @@
 package io.system.heeseong.board.controller;
 
+import io.system.heeseong.board.model.Board;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 
@@ -21,6 +20,13 @@ public class BoardController {
     @GetMapping("/form")
     public String form(){
         return "/board/form";
+    }
+
+    @ResponseBody
+    @PostMapping("/form")
+    public String save(@ModelAttribute Board board){
+        System.out.println(board.toString());
+        return "test";
     }
 
     @PostMapping("/smartEditorUpload")

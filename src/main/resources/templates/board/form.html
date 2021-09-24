@@ -5,56 +5,58 @@
 <div class="container">
     <div th:include="/common/fragment::nav"/>
     <div id="data_wrap" class="col-md-8">
-        <table class="table">
-            <colgroup>
-                <col style="width:17%">
-                <col style="width:auto">
-            </colgroup>
-            <tbody>
-                <tr>
-                    <th>카테고리</th>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                Action <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>제목</th>
-                    <td><input type="text" class="form-control" maxlength="60"
-                               th:value="${info?.tit}"
-                               data-rule-required="true" data-msg-required="제목을 입력해주세요"
-                               data-rule-maxlength="50" data-msg-maxlength="50자 이하로 입력해주세요"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>내용</th>
-                    <td>
-                        <textarea id="content" class="form-control display_none" th:text="${info?.cont}"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <th>파일 </th>
-                    <td class="text-left">
-                        <input type="file" name="files" multiple="multiple"/>
-                        <div th:each="row:${fileList}" style="padding-top: 10px;" th:id="|removeTarget${row.fileSeqNo}|">
-                            <a th:text="${row.orgFileNm}" th:onclick="|fileDown(${row.fileSeqNo})|"></a>
-                            <a th:onclick="|removeFile(${row.fileSeqNo})|">[삭제]</a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <form id="dataForm" name="dataForm"/>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input type="hidden" th:name="boardType" th:value="${boardType}" />
+            <input type="hidden" th:name="categoryIdx" th:value="0" />
+
+            <table class="table">
+                <colgroup>
+                    <col style="width:17%">
+                    <col style="width:auto">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th>카테고리</th>
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    Action <span class="caret"></span>
+                                </button>
+                                <ul id="categoryList" class="dropdown-menu" role="menu">
+                                    <li value="1"><a href="#">Action</a></li>
+                                    <li value="2"><a href="#">Another action</a></li>
+                                    <li value="3"><a href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>제목</th>
+                        <td><input type="text" id="title" class="form-control" name="title" value=""/></td>
+                    </tr>
+                    <tr>
+                        <th>내용</th>
+                        <td>
+                            <textarea id="content" class="form-control display_none" th:text="${info?.cont}"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>파일 </th>
+                        <td class="text-left">
+                            <input type="file" name="files" multiple="multiple"/>
+                            <div th:each="row:${fileList}" style="padding-top: 10px;" th:id="|removeTarget${row.fileSeqNo}|">
+                                <a th:text="${row.orgFileNm}" th:onclick="|fileDown(${row.fileSeqNo})|"></a>
+                                <a th:onclick="|removeFile(${row.fileSeqNo})|">[삭제]</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
         <div class="text-center">
             <button type="button" class="btn btn-default left_right_margin-5" onclick="goList();">취소</button>
-            <button type="button" class="btn btn-default left_right_margin-5">저장</button>
+            <button type="button" class="btn btn-default left_right_margin-5" onclick="goSave();">저장</button>
         </div>
     </div><!-- data_wrap -->
 </div> <!-- /container -->
@@ -62,9 +64,43 @@
 <div th:include="/common/fragment::editor(content='content')"></div>
 <div th:include="/common/fragment::commonScript"/>
 <script>
-function goList(){
-    location.href="/boards";
-}
+
+    var $dataForm = $("#dataForm")
+
+    var goList = function(){
+        location.href="/boards";
+    }
+
+    var goSave = function(){
+        oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
+
+        var editorCont = $.trim($("#content").val());
+        if(editorCont.length == 0 || editorCont=='&nbsp;' || editorCont=='<p>&nbsp;</p>'){
+            alert("글 내용을 입력해주세요.");
+            oEditors.getById["content"].exec("FOCUS");
+            return false;
+        }
+
+        if(confirm("저장 하시겠습니까?")) {
+            $("#content").val($("#content").val().replace(/\u200B/g,''));
+            $dataForm.ajaxSubmit({
+                  type:"POST"
+                , dataType:'json'
+                , url:"/boards/form",
+                success : function(data){
+                    console.log(data);
+                },error:function(x,error){
+                    alert("처리중 오류가 발생했습니다.");
+                }
+            });
+        }
+    }
+
+    $('.dropdown-menu').change(function(){
+        alert('d')
+    })
+
+
 </script>
 </body>
 </html>
