@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/portfolio")
-public class MainController {
+public class PortfolioController {
 
     @GetMapping("/main")
     public String home(){

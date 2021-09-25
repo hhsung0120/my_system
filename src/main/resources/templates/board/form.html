@@ -23,10 +23,10 @@
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Action <span class="caret"></span>
                                 </button>
-                                <ul id="categoryList" class="dropdown-menu" role="menu">
-                                    <li value="1"><a href="#">Action</a></li>
-                                    <li value="2"><a href="#">Another action</a></li>
-                                    <li value="3"><a href="#">Something else here</a></li>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li value="1" onclick="setValue(this)"><a href="#">test</a></li>
+                                    <li value="2" onclick="setValue(this)"><a href="#">Another action</a></li>
+                                    <li value="3" onclick="setValue(this)"><a href="#">Something else here</a></li>
                                 </ul>
                             </div>
                         </td>
@@ -96,9 +96,13 @@
         }
     }
 
-    $('.dropdown-menu').change(function(){
-        alert('d')
-    })
+    var setValue = function(obj){
+        console.log(obj);
+        var value = $(obj).attr("value");
+        console.log(value);
+        var text = $(obj).children('a').text();
+        console.log(text);
+    }
 
 
 </script>
