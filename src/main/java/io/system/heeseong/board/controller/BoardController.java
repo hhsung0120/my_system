@@ -26,6 +26,9 @@ public class BoardController {
     @PostMapping("/form")
     public String save(@ModelAttribute Board board){
         System.out.println(board.toString());
+        for(MultipartFile multipartFile : board.getFiles()){
+            System.out.println(multipartFile.getOriginalFilename());
+        }
         return "test";
     }
 
