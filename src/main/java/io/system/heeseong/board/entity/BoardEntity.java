@@ -6,6 +6,8 @@ import io.system.heeseong.common.enumtype.BoardType;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Getter
@@ -28,11 +30,9 @@ public class BoardEntity extends BaseEntity {
     @JoinColumn(name = "category_idx", nullable = false)
     private BoardCategoryEntity boardCategoryEntity;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "indexNumber")
-    })
-    private List<FileEntity> fileEntity;
+
+    @Transient
+    private List<FileEntity> fileEntityList = new ArrayList<>();
 
     @Column(nullable = false)
     private String title;
@@ -40,4 +40,7 @@ public class BoardEntity extends BaseEntity {
     @Column(nullable = false)
     private String content;
 
+    public void setFileEntityList(List<FileEntity> fileList){
+        this.fileEntityList = fileList;
+    }
 }
