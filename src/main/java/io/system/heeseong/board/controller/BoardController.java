@@ -1,16 +1,24 @@
 package io.system.heeseong.board.controller;
 
 import io.system.heeseong.board.model.Board;
+import io.system.heeseong.board.service.BoardDetailService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.nio.file.Paths;
 
+@Slf4j
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/boards")
 public class BoardController {
+
+    private final BoardDetailService boardDetailService;
 
     @GetMapping("")
     public String list(){
@@ -31,6 +39,15 @@ public class BoardController {
         }
         return "test";
     }
+
+    @GetMapping("/{boardId}")
+    public ModelAndView getBoard(@PathVariable String boardId){
+        log.info("boardId {}", boardId);
+        boardDetailService.getBoard(boardId);
+        return new ModelAndView("/board/list");
+    }
+
+
 
     @PostMapping("/smartEditorUpload")
     public String smartEditorUpload(StandardMultipartHttpServletRequest request) throws Exception{

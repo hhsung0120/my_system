@@ -1,7 +1,10 @@
 package io.system.heeseong.common.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
+@Getter
 @Entity
 @Table(name = "file")
 public class FileEntity extends BaseEntity {
@@ -20,7 +23,7 @@ public class FileEntity extends BaseEntity {
     private String originalFileName;
 
     @Column(nullable = false)
-    private String uuidFileName;
+    private String uuid;
 
     @Column(nullable = false)
     private String extension;

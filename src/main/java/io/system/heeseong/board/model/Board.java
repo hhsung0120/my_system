@@ -16,6 +16,10 @@ public class Board {
     private String content;
     private List<MultipartFile> files;
 
+    public Board() {
+    }
+
+    @Builder
     public Board(Long idx, int categoryIdx, String title, String content, List<MultipartFile> files) {
         this.idx = idx;
         this.categoryIdx = categoryIdx;
