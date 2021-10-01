@@ -2,15 +2,18 @@ package io.system.heeseong.board.controller;
 
 import io.system.heeseong.board.model.Board;
 import io.system.heeseong.board.service.BoardDetailService;
+import io.system.heeseong.board.service.BoardMainService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.nio.file.Paths;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -18,6 +21,7 @@ import java.nio.file.Paths;
 @RequestMapping("/boards")
 public class BoardController {
 
+    private final BoardMainService boardMainService;
     private final BoardDetailService boardDetailService;
 
     @GetMapping("")
@@ -33,10 +37,7 @@ public class BoardController {
     @ResponseBody
     @PostMapping("/form")
     public String save(@ModelAttribute Board board){
-        System.out.println(board.toString());
-        for(MultipartFile multipartFile : board.getFiles()){
-            System.out.println(multipartFile.getOriginalFilename());
-        }
+        boardMainService.saveBoard(board);
         return "test";
     }
 

@@ -38,7 +38,7 @@
             <tr>
                 <th>내용</th>
                 <td>
-                    <textarea id="content" name="content" class="form-control display_none" th:text="${info?.cont}"></textarea>
+                    <textarea id="content" class="form-control display_none" name="content" th:text="${info?.cont}"></textarea>
                 </td>
             </tr>
             <tr>
@@ -83,9 +83,9 @@
 
         if(confirm("저장 하시겠습니까?")) {
             $dataForm.ajaxSubmit({
-                url:"/boards/form"
-                , type:"post"
-                , dataType:'text'
+                url : "/boards/form"
+                , method : "POST"
+                , dataType : 'text'
                 , success : function(data){
                     console.log(data);
                 } ,error:function(x,error){
