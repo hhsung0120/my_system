@@ -22,10 +22,8 @@ public class BoardMainService {
     public void saveBoard(Board board){
         if(board.getIdx() == null){
 
-            if(board.getFiles() != null){
-                for(MultipartFile f : board.getFiles()){
-                    System.out.println(f.getOriginalFilename());
-                }
+            for(MultipartFile f : board.getFiles()){
+                System.out.println(f.getOriginalFilename());
             }
             System.out.println(board.getCategoryIdx());
             System.out.println(board.getContent());
