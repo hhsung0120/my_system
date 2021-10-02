@@ -44,7 +44,7 @@
             <tr>
                 <th>파일 </th>
                 <td class="text-left">
-                    <input type="file" name="files" multiple="multiple" value=""/>
+                    <input type="file" name="files" multiple="multiple" />
                     <div th:each="row:${fileList}" style="padding-top: 10px;" th:id="|removeTarget${row.fileSeqNo}|">
                         <a th:text="${row.orgFileNm}" th:onclick="|fileDown(${row.fileSeqNo})|"></a>
                         <a th:onclick="|removeFile(${row.fileSeqNo})|">[삭제]</a>
