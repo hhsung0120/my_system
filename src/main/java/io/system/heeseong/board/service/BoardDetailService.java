@@ -25,7 +25,7 @@ public class BoardDetailService {
 
     public Board getBoard(String boardId){
         Optional<BoardEntity> boardEntity = boardRepository.findById(1L);
-        List<FileEntity> fileEntity = fileRepository.findByIndexNumberAndTableName(1L, "BOARD");
+        List<FileEntity> fileEntity = fileRepository.findByBoardIdxAndTableName(1L, "BOARD");
         boardEntity.get().setFileEntityList(fileEntity);
         log.info("boardId {}", boardEntity.get().getBoardCategoryEntity().getCategoryName());
         log.info("boardId {}", boardEntity.get().getFileEntityList().toArray());

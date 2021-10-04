@@ -24,7 +24,7 @@ logging:
   level:
     org.springframework.web: info
     io.system.heeseong: info
-    org.hibernate.type: info
+    org.hibernate.type: trace
     org.hibernate.SQL: info
 
   file:
@@ -36,4 +36,4 @@ logging:
 
 path:
   web-access-path : /upload/**
-  default-upload-path: D:/upload/system/
+  default-upload-path: D:/upload/system

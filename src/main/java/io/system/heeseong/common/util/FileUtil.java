@@ -19,7 +19,7 @@ public class FileUtil {
      * 업로드 경로에 폴더 존재하지 않을 시 폴더생성
      * @param uploadPath 폴더 경로
      */
-    public static void makeUploadPathDirectory(String uploadPath) {
+    private static void makeUploadPathDirectory(String uploadPath) {
         File directory = new File(uploadPath);
         if (!directory.exists()) {
             directory.mkdirs();
@@ -31,7 +31,7 @@ public class FileUtil {
      * @param fileName
      * @return String
      */
-    public static String getFileExtension(String fileName) {
+    private static String getFileExtension(String fileName) {
         return StringUtils.getFilenameExtension(fileName).toLowerCase();
     }
 
@@ -39,7 +39,7 @@ public class FileUtil {
      * UUID 생성
      * @return String
      */
-    public static String getUuidFileName(){
+    private static String getUuidFileName(){
         return UUID.randomUUID().toString().replace("-", "");
     }
 

@@ -1,6 +1,6 @@
 package io.system.heeseong.board.entity;
 
-import io.system.heeseong.common.entity.BaseEntity;
+import io.system.heeseong.common.entity.TimeEntity;
 import io.system.heeseong.common.entity.FileEntity;
 import io.system.heeseong.common.enumtype.BoardType;
 import lombok.Builder;
@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "board")
-public class BoardEntity extends BaseEntity {
+public class BoardEntity extends TimeEntity {
 
     @Id @Column(name = "board_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class BoardEntity extends BaseEntity {
     @Column(nullable = false)
     private BoardType boardType;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_idx", nullable = false)
     private BoardCategoryEntity boardCategoryEntity;
 
@@ -39,11 +39,21 @@ public class BoardEntity extends BaseEntity {
     @Column(nullable = false)
     private String content;
 
-    public void setFileEntityList(List<FileEntity> fileList){
-        this.fileEntityList = fileList;
+    public BoardEntity() {
     }
 
-    public BoardEntity() {
+    @Builder(builderMethodName = "insertBoard")
+    public BoardEntity(Long idx, String tableName, BoardType boardType, String title, String content, Long categoryIdx) {
+        this.idx = idx;
+        this.tableName = tableName;
+        this.boardType = boardType;
+        this.title = title;
+        this.content = content;
+        this.boardCategoryEntity = new BoardCategoryEntity(categoryIdx);
+    }
+
+    public void setFileEntityList(List<FileEntity> fileList){
+        this.fileEntityList = fileList;
     }
 
 }

@@ -1,5 +1,6 @@
 package io.system.heeseong.common.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Table(name = "file")
-public class FileEntity extends BaseEntity {
+public class FileEntity extends TimeEntity {
 
     @Id @Column(name = "file_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +18,7 @@ public class FileEntity extends BaseEntity {
     private String tableName;
 
     @Column(nullable = false)
-    private Long indexNumber; //해당 게시판의 idx
+    private Long boardIdx; //해당 게시판의 idx
 
     @Column(nullable = false)
     private String originalFileName;
@@ -29,5 +30,18 @@ public class FileEntity extends BaseEntity {
     private String extension;
 
     @Column(nullable = false)
-    private String filePath;
+    private String uploadPath;
+
+    public FileEntity() {
+    }
+
+    @Builder(builderMethodName = "fileInsert")
+    public FileEntity(String tableName, Long boardIdx, String originalFileName, String uuid, String extension, String uploadPath) {
+        this.tableName = tableName;
+        this.boardIdx = boardIdx;
+        this.originalFileName = originalFileName;
+        this.uuid = uuid;
+        this.extension = extension;
+        this.uploadPath = uploadPath;
+    }
 }
