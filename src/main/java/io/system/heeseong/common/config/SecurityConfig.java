@@ -1,4 +1,4 @@
-package io.system.heeseong.config;
+package io.system.heeseong.common.config;
 
 import io.system.heeseong.user.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web){
-        web.ignoring().antMatchers("/js/**", "/css/**", "/images/**");
+        web.ignoring().antMatchers("/js/**", "/css/**", "/images/**", "/smartEditor/**");
     }
 
     @Override
@@ -46,7 +46,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .authenticationProvider(customAuthenticationProvider)
             .headers()
-                .frameOptions().disable();
+                .frameOptions().disable()
+            .and()
+                .csrf().disable();
+
+
 
     }
 

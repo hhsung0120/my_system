@@ -1,4 +1,4 @@
-package io.system.heeseong.config;
+package io.system.heeseong.common.config;
 
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;

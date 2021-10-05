@@ -46,9 +46,13 @@ public class BoardMainService {
 
        if(Objects.nonNull(board.getFiles())){
            for(MultipartFile files : board.getFiles()){
-               Files file = FileUtil.executeFileUpload(files, uploadPath + "/board/");
+               Files file = fileUpload(files);
                fileRepository.save(file.toEntity(boardIdx, tableName));
            }
        }
+    }
+
+    public Files fileUpload(MultipartFile files){
+        return FileUtil.executeFileUpload(files, uploadPath + "/board/");
     }
 }

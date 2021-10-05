@@ -1,4 +1,4 @@
-package io.system.heeseong.config;
+package io.system.heeseong.common.config;
 
 import io.system.heeseong.user.model.AccountUser;
 import io.system.heeseong.user.service.LoginService;

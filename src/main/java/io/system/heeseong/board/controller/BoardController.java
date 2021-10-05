@@ -3,8 +3,10 @@ package io.system.heeseong.board.controller;
 import io.system.heeseong.board.model.Board;
 import io.system.heeseong.board.service.BoardDetailService;
 import io.system.heeseong.board.service.BoardMainService;
+import io.system.heeseong.common.model.Files;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
@@ -13,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.nio.file.Paths;
 
 @Slf4j
-@ControllerAdvice
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/boards")
 public class BoardController {
@@ -45,24 +47,14 @@ public class BoardController {
         return new ModelAndView("/board/list");
     }
 
-
-
     @PostMapping("/smartEditorUpload")
-    public String smartEditorUpload(StandardMultipartHttpServletRequest request) throws Exception{
-        System.out.println(request);
-
-        MultipartFile upload = request.getFile("upload");
-        System.out.println(request.getParameter("callback"));
-        //유틸 가지고 와서 처리하자
-        upload.transferTo(Paths.get("D:/upload/system/"+upload.getOriginalFilename()));
-        System.out.println(upload.getOriginalFilename());
-
+    public String smartEditorUpload(StandardMultipartHttpServletRequest request){
+        Files files = boardMainService.fileUpload(request.getFile("upload"));
         String returnData = new StringBuilder()
                 .append(request.getParameter("callback"))
                 .append("?callback_func=" + request.getParameter("callback_func"))
-                .append("&bNewLine=true&sFileName="+"test.png" + "&sFileURL=" + "/upload/test.png")
-                .toString()
-                ;
+                .append("&bNewLine=true&sFileName="+ files.getUuid() + "&sFileURL=/upload/board/" + files.getUuid() + "." + files.getExtension())
+                .toString();
 
         return "redirect:" + returnData;
     }
