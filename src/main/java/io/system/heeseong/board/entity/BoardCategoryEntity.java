@@ -5,8 +5,9 @@ import lombok.Getter;
 
 import javax.persistence.*;
 
-@Getter
+
 @Entity
+@Getter
 @Table(name = "board_category")
 public class BoardCategoryEntity extends TimeEntity {
 
@@ -16,6 +17,9 @@ public class BoardCategoryEntity extends TimeEntity {
 
     @Column(nullable = false)
     private String categoryName;
+
+    @Column(nullable = false)
+    private String boardType;
 
     public BoardCategoryEntity() {
     }

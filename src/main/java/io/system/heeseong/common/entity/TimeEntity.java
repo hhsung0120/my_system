@@ -15,10 +15,11 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class TimeEntity {
 
+    @Column(nullable = false)
     private String createBy;
 
     @CreationTimestamp
-    @Column(updatable = false)
+    @Column(updatable = false, nullable = false)
     private LocalDateTime createDate;
 
     private String lastModifiedBy;
@@ -26,4 +27,11 @@ public class TimeEntity {
     @UpdateTimestamp
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
+
+    public TimeEntity() {
+    }
+
+    public TimeEntity(String createBy) {
+        this.createBy = createBy;
+    }
 }

@@ -3,6 +3,7 @@ package io.system.heeseong.board.model;
 import io.system.heeseong.board.entity.BoardEntity;
 import io.system.heeseong.common.enumtype.BoardType;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +20,9 @@ public class Board {
     private String content;
     private List<MultipartFile> files;
 
+    @Setter
+    private String createBy;
+
     public Board() {
     }
 
@@ -29,6 +33,7 @@ public class Board {
                 .title(title)
                 .content(content)
                 .categoryIdx(categoryIdx)
+                .createBy(createBy)
                 .build();
     }
 }
