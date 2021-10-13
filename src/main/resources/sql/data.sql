@@ -1,4 +1,4 @@
-insert into board_category(create_by, create_date, board_type, category_name) values('system', now(), 'PORTFOLIO', 'Introduction')
-insert into board_category(create_by, create_date, board_type, category_name) values('system', now(), 'PORTFOLIO', 'Concat & Channel')
-insert into board_category(create_by, create_date, board_type, category_name) values('system', now(), 'PORTFOLIO', '망치 그림 Skill')
-insert into board_category(create_by, create_date, board_type, category_name) values('system', now(), 'PORTFOLIO', '망치 그림 Skill')
+insert into parent_category(category_name, create_by, create_date) values('Introduction', 'system', now());
+insert into parent_category(category_name, create_by, create_date) values('Concat & Channel', 'system', now());
+insert into parent_category(category_name, create_by, create_date) values('망치 그림 Skill', 'system', now());
+insert into parent_category(category_name, create_by, create_date) values('망치 그림 Skill', 'system', now());

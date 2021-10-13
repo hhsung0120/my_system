@@ -26,6 +26,12 @@ public class Board {
     public Board() {
     }
 
+    public Board(Long idx, Long categoryIdx, BoardType boardType) {
+        this.idx = idx;
+        this.categoryIdx = categoryIdx;
+        this.boardType = boardType;
+    }
+
     public BoardEntity toEntity(){
         return BoardEntity.insertBoard()
                 .tableName("board")
