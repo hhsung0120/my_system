@@ -15,6 +15,26 @@ spring:
     encoding: UTF-8
     suffix: .html
 
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+      schema-locations: classpath:sql/schema.sql
+      data-locations: classpath:sql/data.sql
+
+
   #DB configuration
   mybatis:
     configuration:
