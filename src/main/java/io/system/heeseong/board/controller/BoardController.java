@@ -80,9 +80,9 @@ public class BoardController {
         listInMap.add(data2);
 
         List<Board> listInBoard = new ArrayList<>();
-        Board board = new Board(1L, 2L, BoardType.BOARD);
-        Board board1 = new Board(1L, 2L, BoardType.BOARD);
-        Board board2 = new Board(1L, 2L, BoardType.BOARD);
+        Board board = new Board(1L, BoardType.BOARD);
+        Board board1 = new Board(1L,BoardType.BOARD);
+        Board board2 = new Board(1L, BoardType.BOARD);
         listInBoard.add(board);
         listInBoard.add(board1);
         listInBoard.add(board2);

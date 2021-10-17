@@ -24,14 +24,13 @@ public class BoardDetailService {
 
 
     public Board getBoard(String boardId){
-        Optional<BoardEntity> boardEntity = boardRepository.findById(1L);
-        List<FileEntity> fileEntity = fileRepository.findByBoardIdxAndTableName(1L, "BOARD");
-        boardEntity.get().setFileEntityList(fileEntity);
-        log.info("boardId {}", boardEntity.get().getBoardCategoryEntity().getCategoryName());
-        log.info("boardId {}", boardEntity.get().getFileEntityList().toArray());
-        for(FileEntity f : boardEntity.get().getFileEntityList()){
-            System.out.println(f.getOriginalFileName());
-        }
+//        Optional<BoardEntity> boardEntity = boardRepository.findById(1L);
+//        List<FileEntity> fileEntity = fileRepository.findByBoardIdxAndTableName(1L, "BOARD");
+//        boardEntity.get().setFileEntityList(fileEntity);
+//        log.info("boardId {}", boardEntity.get().getFileEntityList().toArray());
+//        for(FileEntity f : boardEntity.get().getFileEntityList()){
+//            System.out.println(f.getOriginalFileName());
+//        }
         return new Board();
     }
 }

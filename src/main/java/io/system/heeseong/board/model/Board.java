@@ -14,7 +14,6 @@ import java.util.List;
 public class Board {
 
     private Long idx;
-    private Long categoryIdx;
     private BoardType boardType;
     private String title;
     private String content;
@@ -26,9 +25,8 @@ public class Board {
     public Board() {
     }
 
-    public Board(Long idx, Long categoryIdx, BoardType boardType) {
+    public Board(Long idx, BoardType boardType) {
         this.idx = idx;
-        this.categoryIdx = categoryIdx;
         this.boardType = boardType;
     }
 
@@ -38,7 +36,6 @@ public class Board {
                 .boardType(BoardType.BOARD)
                 .title(title)
                 .content(content)
-                .categoryIdx(categoryIdx)
                 .createBy(createBy)
                 .build();
     }

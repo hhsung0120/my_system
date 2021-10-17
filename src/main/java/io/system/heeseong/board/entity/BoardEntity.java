@@ -23,10 +23,6 @@ public class BoardEntity extends TimeEntity {
     @Column(nullable = false)
     private BoardType boardType;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_idx", nullable = false)
-    private BoardCategoryEntity boardCategoryEntity;
-
     @Transient
     private String tableName;
 
@@ -43,14 +39,13 @@ public class BoardEntity extends TimeEntity {
     }
 
     @Builder(builderMethodName = "insertBoard")
-    public BoardEntity(Long idx, String tableName, BoardType boardType, String title, String content, Long categoryIdx, String createBy) {
+    public BoardEntity(Long idx, String tableName, BoardType boardType, String title, String content, String createBy) {
         super(createBy);
         this.idx = idx;
         this.tableName = tableName;
         this.boardType = boardType;
         this.title = title;
         this.content = content;
-        this.boardCategoryEntity = new BoardCategoryEntity(categoryIdx);
     }
 
     public void setFileEntityList(List<FileEntity> fileList){
