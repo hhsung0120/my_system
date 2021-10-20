@@ -15,6 +15,8 @@ public class Board {
 
     private Long idx;
     private BoardType boardType;
+    private Long parentCategoryIdx;
+    private Long childCategoryIdx;
     private String title;
     private String content;
     private List<MultipartFile> files;
@@ -34,6 +36,8 @@ public class Board {
         return BoardEntity.insertBoard()
                 .tableName("board")
                 .boardType(BoardType.BOARD)
+                .parentCategoryIdx(parentCategoryIdx)
+                .childCategoryIdx(childCategoryIdx)
                 .title(title)
                 .content(content)
                 .createBy(createBy)

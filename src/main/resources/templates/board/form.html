@@ -8,7 +8,8 @@
         <form id="dataForm" name="dataForm" enctype="multipart/form-data" />
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <input type="hidden" th:name="boardType" th:value="${boardType}" />
-        <input type="hidden" id="categoryIdx" th:name="categoryIdx" th:value="0" />
+        <input type="hidden" id="parentCategoryIdx" th:name="parentCategoryIdx" th:value="0" />
+        <input type="hidden" id="childCategoryIdx" th:name="childCategoryIdx" th:value="0" />
 
         <table class="table">
             <colgroup>
@@ -17,16 +18,31 @@
             </colgroup>
             <tbody>
             <tr>
-                <th>카테고리</th>
+                <th>1차 카테고리</th>
                 <td>
                     <div class="btn-group">
-                        <button type="button" id="categoryText" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <button type="button" id="parentCategoryText" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             action <span class="caret"></span>
                         </button>
-                        <ul id="categoryList" class="dropdown-menu" role="menu">
-                            <li value="1" onclick="setCategoryIdx(this)"><a href="#">test</a></li>
-                            <li value="2" onclick="setCategoryIdx(this)"><a href="#">Another action</a></li>
-                            <li value="3" onclick="setCategoryIdx(this)"><a href="#">Something else here</a></li>
+                        <ul id="parentCategoryList" class="dropdown-menu" role="menu">
+                            <li value="1" onclick="setParentCategoryIdx(this)"><a href="#">test</a></li>
+                            <li value="2" onclick="setParentCategoryIdx(this)"><a href="#">Another action</a></li>
+                            <li value="3" onclick="setParentCategoryIdx(this)"><a href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>2차 카테고리</th>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" id="childCategoryText" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            action <span class="caret"></span>
+                        </button>
+                        <ul id="childCategoryList" class="dropdown-menu" role="menu">
+                            <li value="1" onclick="setChildCategoryIdx(this)"><a href="#">test</a></li>
+                            <li value="2" onclick="setChildCategoryIdx(this)"><a href="#">Another action</a></li>
+                            <li value="3" onclick="setChildCategoryIdx(this)"><a href="#">Something else here</a></li>
                         </ul>
                     </div>
                 </td>
@@ -56,16 +72,15 @@
         </form>
         <div class="text-center">
             <button type="button" class="btn btn-default left_right_margin-5" onclick="goList();">취소</button>
-            <button type="button" class="btn btn-default left_right_margin-5" onclick="goSave();">저장</button>
+            <button type="button" id="saveButton" class="btn btn-default left_right_margin-5" onclick="goSave();">저장</button>
         </div>
     </div><!-- data_wrap -->
 </div> <!-- /container -->
 
 <div th:include="/common/fragment::editor(content='content')"></div>
 <script>
-    setCategoryIdx($('#categoryList > li:first'));
-
-    var $dataForm = $("#dataForm")
+    setParentCategoryIdx($('#parentCategoryList > li:first'));
+    setChildCategoryIdx($('#childCategoryList > li:first'));
 
     var goList = function(){
         location.href="/boards";
@@ -91,6 +106,7 @@
                 , data : new FormData($('#dataForm')[0])
                 , success : function(data){
                     console.log(data);
+                    $('#saveButton').hide();
                 } ,error:function(x,error){
                     console.log(x);
                     console.log(error);
@@ -100,10 +116,16 @@
         }
     }
 
-    function setCategoryIdx(obj){
-        var text = $(obj).children('a').text();
-        $("#categoryText").html(text + '<span class="caret"></span>');
-        $("#categoryIdx").val($(obj).attr("value"));
+    function setParentCategoryIdx(obj){
+        let text = $(obj).children('a').text();
+        $("#parentCategoryText").html(text + '<span class="caret"></span>');
+        $("#parentCategoryIdx").val($(obj).attr("value"));
+    }
+
+    function setChildCategoryIdx(obj){
+        let text = $(obj).children('a').text();
+        $("#childCategoryText").html(text + '<span class="caret"></span>');
+        $("#childCategoryIdx").val($(obj).attr("value"));
     }
 </script>
 </body>

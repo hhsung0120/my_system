@@ -35,17 +35,27 @@ public class BoardEntity extends TimeEntity {
     @Column(nullable = false)
     private String content;
 
+    @ManyToOne
+    @JoinColumn(name = "parent_category_idx")
+    private ParentCategoryEntity parentCategoryEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "child_category_idx")
+    private ChildCategoryEntity childCategoryEntity;
+
     public BoardEntity() {
     }
 
     @Builder(builderMethodName = "insertBoard")
-    public BoardEntity(Long idx, String tableName, BoardType boardType, String title, String content, String createBy) {
+    public BoardEntity(Long idx, String tableName, BoardType boardType, String title, String content, String createBy, Long parentCategoryIdx, Long childCategoryIdx) {
         super(createBy);
         this.idx = idx;
         this.tableName = tableName;
         this.boardType = boardType;
         this.title = title;
-        this.content = content;
+        this.content = content;;
+        this.parentCategoryEntity = new ParentCategoryEntity(parentCategoryIdx);
+        this.childCategoryEntity = new ChildCategoryEntity(childCategoryIdx);
     }
 
     public void setFileEntityList(List<FileEntity> fileList){

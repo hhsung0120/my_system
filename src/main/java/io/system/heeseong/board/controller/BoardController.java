@@ -39,6 +39,7 @@ public class BoardController {
     @ResponseBody
     @PostMapping("/form")
     public String save(@ModelAttribute Board board){
+        System.out.println(board.toString());
         boardMainService.saveBoard(board);
         return "test";
     }

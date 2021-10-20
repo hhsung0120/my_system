@@ -41,9 +41,19 @@ public class BoardMainService {
     }
 
     private void insertBoard(Board board){
+        System.out.println(board.toString());
+        System.out.println(board.toEntity());
         board.setCreateBy("세션userIdx");
-        Long boardIdx = Optional.ofNullable(boardRepository.save(board.toEntity()).getIdx())
-                                 .orElseThrow(() -> new RuntimeException("오류"));
+        Long boardIdx = 0L;
+        try{
+            boardRepository.save(board.toEntity());
+
+//            Long boardIdx = Optional.ofNullable(boardRepository.save(board.toEntity()).getIdx())
+//                    .orElseThrow(() -> new RuntimeException("오류"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         for(MultipartFile files : board.getFiles()){
             if(!files.isEmpty()){
