@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `child_category` (
   `create_date` datetime NOT NULL,
   `last_modified_by` varchar(255) DEFAULT NULL,
   `last_modified_date` datetime DEFAULT NULL,
+  `use_yn` varchar(1) NOT NULL,
   PRIMARY KEY (`child_category_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -52,19 +53,20 @@ CREATE TABLE IF NOT EXISTS `parent_category` (
   `create_date` datetime NOT NULL,
   `last_modified_by` varchar(255) DEFAULT NULL,
   `last_modified_date` datetime DEFAULT NULL,
+  `use_yn` varchar(1) NOT NULL,
   PRIMARY KEY (`parent_category_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-insert into parent_category(category_name, create_by, create_date) values('이모티콘About me', 'system', now());
-insert into parent_category(category_name, create_by, create_date) values('망치그림 skill', 'system', now());
-insert into parent_category(category_name, create_by, create_date) values('노트북그림 work experience & project', 'system', now());
-insert into parent_category(category_name, create_by, create_date) values('자전거그림 personal experience & project', 'system', now());
-insert into parent_category(category_name, create_by, create_date) values('학교그림 education & 자격증', 'system', now());
+insert into parent_category(category_name, create_by, create_date) values('이모티콘About me', 'system', now(), 'Y');
+insert into parent_category(category_name, create_by, create_date) values('망치그림 skill', 'system', now(), 'Y');
+insert into parent_category(category_name, create_by, create_date) values('노트북그림 work experience & project', 'system', now(), 'Y');
+insert into parent_category(category_name, create_by, create_date) values('자전거그림 personal experience & project', 'system', now(), 'Y');
+insert into parent_category(category_name, create_by, create_date) values('학교그림 education & 자격증', 'system', now(), 'Y');
 
-insert into child_category(category_name, create_by, create_date) values('Introduction', 'system', now());
-insert into child_category(category_name, create_by, create_date) values('Concat & Channel', 'system', now());
-insert into child_category(category_name, create_by, create_date) values('backend', 'system', now());
-insert into child_category(category_name, create_by, create_date) values('devops', 'system', now());
-insert into child_category(category_name, create_by, create_date) values('frontend', 'system', now());
-insert into child_category(category_name, create_by, create_date) values('collaboration', 'system', now());
+insert into child_category(category_name, create_by, create_date) values('Introduction', 'system', now(), 'Y');
+insert into child_category(category_name, create_by, create_date) values('Concat & Channel', 'system', now(), 'Y');
+insert into child_category(category_name, create_by, create_date) values('backend', 'system', now(), 'Y');
+insert into child_category(category_name, create_by, create_date) values('devops', 'system', now(), 'Y');
+insert into child_category(category_name, create_by, create_date) values('frontend', 'system', now(), 'Y');
+insert into child_category(category_name, create_by, create_date) values('collaboration', 'system', now(), 'Y');

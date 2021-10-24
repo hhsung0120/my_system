@@ -23,17 +23,21 @@ import java.util.Map;
 @RequestMapping("/boards")
 public class BoardController {
 
-    private final BoardMainService boardMainService;
-    private final BoardDetailService boardDetailService;
+    final BoardMainService boardMainService;
+    final BoardDetailService boardDetailService;
 
-    @GetMapping("")
+
+    @GetMapping
     public String list(){
         return "/board/list";
     }
 
     @GetMapping("/form")
-    public String form(){
-        return "/board/form";
+    public ModelAndView form(){
+        return new ModelAndView("/board/form")
+                     .addObject("parentCategoryList", boardDetailService.getParentCategoryList())
+                     //.addObject("childCategoryList", boardDetailService.getChildCategoryList())
+                    ;
     }
 
     @ResponseBody
