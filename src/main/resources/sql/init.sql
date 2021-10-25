@@ -57,7 +57,6 @@ CREATE TABLE IF NOT EXISTS `parent_category` (
   PRIMARY KEY (`parent_category_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
 insert into parent_category(category_name, create_by, create_date) values('이모티콘About me', 'system', now(), 'Y');
 insert into parent_category(category_name, create_by, create_date) values('망치그림 skill', 'system', now(), 'Y');
 insert into parent_category(category_name, create_by, create_date) values('노트북그림 work experience & project', 'system', now(), 'Y');

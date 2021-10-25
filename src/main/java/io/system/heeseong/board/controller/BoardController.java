@@ -36,7 +36,7 @@ public class BoardController {
     public ModelAndView form(){
         return new ModelAndView("/board/form")
                      .addObject("parentCategoryList", boardDetailService.getParentCategoryList())
-                     //.addObject("childCategoryList", boardDetailService.getChildCategoryList())
+                     .addObject("childCategoryList", boardDetailService.getChildCategoryList())
                     ;
     }
 
@@ -112,10 +112,10 @@ public class BoardController {
 
 
 
-        System.out.println(listInMap);
-        System.out.println(listInBoard);
-        System.out.println(data);
-        System.out.println(mpaInList);
+        System.out.println("리스트 안에 맵 =>" + listInMap);
+        System.out.println("리스트 안에 보드 객체 =>" + listInBoard);
+        System.out.println("맵 안에 List<Object> =>" + data);
+        System.out.println("맵 안에 List<Board> =>" + mpaInList);
 
 
         return "test";
