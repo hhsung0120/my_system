@@ -4,45 +4,56 @@
 <body>
 <div class="container">
     <input type="button" id="" name="" value="test" onclick="checkLoginState()"/>
+    <input type="button" id="" name="" value="login" onclick="checkLogin()"/>
+    <input type="button" id="" name="" value="login" onclick="checkLoginStatus()"/>
+
 
 </div>
 <script>
-    function checkLoginState() {
+    alert("페북");
+    checkLoginState = function(){
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '961694458024696',
+                cookie     : true,
+                xfbml      : true,
+                version: 'v12.0',
+            });
+            FB.AppEvents.logPageView();
+        };
+        (function (d, s, id) {
+            var js,
+                fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, 'script', 'facebook-jssdk');
+    }
+
+    checkLogin = function(){
+        FB.login(
+            function (login_result) {
+                if (login_result.status === 'connected') {
+                    // 여기에 3번 로직을 넣으면 된다.
+                } else if (login_result.status === 'not_authorized') {
+                    alert('페이스북 인증에 실패했습니다');
+                } else {
+                    alert('페이스북 API 호출에 실패했습니다');
+                }
+            },
+            { scope: 'publish_pages,manage_pages' }
+        );
+    }
+
+    checkLoginStatus = function(){
         FB.getLoginStatus(function(response) {
             statusChangeCallback(response);
         });
     }
-
-    FB.getLoginStatus(function(response) {
-        console.log("gd");
-        statusChangeCallback(response);
-    });
-
-    FB.api(
-        '/me',
-        'GET',
-        {"fields":"id,name"},
-        function(response) {
-            console.log(response)
-        }
-    );
-
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '961694458024696',
-            cookie     : true,
-            xfbml      : true,
-            version    : '12.0'
-        });
-        FB.AppEvents.logPageView();
-    };
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
 </script>
 </body>
 </html>
