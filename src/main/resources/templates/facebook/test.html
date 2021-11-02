@@ -3,51 +3,51 @@
 <head th:include="/common/fragment::head"/>
 <body>
 <div class="container">
-    <input type="button" id="" name="" value="test" onclick="checkLoginState()"/>
     <input type="button" id="" name="" value="login" onclick="checkLogin()"/>
+    <input type="button" id="" name="" value="logout" onclick="checkLogout()"/>
     <input type="button" id="" name="" value="login" onclick="checkLoginStatus()"/>
-
-
 </div>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v12.0&appId=961694458024696&autoLogAppEvents=1" nonce="1gHG0nsH"></script>
+<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
 <script>
-    alert("페북");
-    checkLoginState = function(){
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '961694458024696',
-                cookie     : true,
-                xfbml      : true,
-                version: 'v12.0',
-            });
-            FB.AppEvents.logPageView();
-        };
-        (function (d, s, id) {
-            var js,
-                fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
+    alert("init")
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1511139339243492',
+            xfbml      : true,
+            version    : 'v12.0'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+    checkLogin = function(){
+        FB.login(function(response) {
+            if (response.status === 'connected') {
+                // Logged into your webpage and Facebook.
+                alert(1)
+            } else {
+                alert(2)
             }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        })(document, 'script', 'facebook-jssdk');
+        });
     }
 
-    checkLogin = function(){
-        FB.login(
-            function (login_result) {
-                if (login_result.status === 'connected') {
-                    // 여기에 3번 로직을 넣으면 된다.
-                } else if (login_result.status === 'not_authorized') {
-                    alert('페이스북 인증에 실패했습니다');
-                } else {
-                    alert('페이스북 API 호출에 실패했습니다');
-                }
-            },
-            { scope: 'publish_pages,manage_pages' }
-        );
+    checkLogout = function(){
+        FB.logout(function(response) {
+            console.log(response);
+        });
     }
+
 
     checkLoginStatus = function(){
         FB.getLoginStatus(function(response) {
