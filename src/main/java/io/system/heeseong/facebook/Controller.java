@@ -19,4 +19,9 @@ public class Controller {
     public String test2(){
         return "/facebook/test2";
     }
+
+    @GetMapping("/facebook/test3")
+    public String test3(){
+        return "/facebook/test3";
+    }
 }

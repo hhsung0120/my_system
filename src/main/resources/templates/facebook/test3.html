@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="/common/fragment::head"/>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1511139339243492',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v12.0'
+        });
+
+        FB.AppEvents.logPageView();
+
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<body>
+<div>
+    <!-- The JS SDK Login Button -->
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+    <!-- Load the JS SDK asynchronously -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+</div>
+<div>
+    <input type="button" id="" name="" value="로그인 체크" onclick="loginCheck()" />
+    <input type="button" id="" name="" value="글쓰기" onclick="createFeed()" />
+
+</div>
+<script>
+
+    function loginCheck(){
+        FB.login(
+            function (login_result) {
+                if (login_result.status === 'connected') {
+                    getFbAccessToken();
+                } else if (login_result.status === 'not_authorized') {
+                    alert('페이스북 인증에 실패했습니다');
+                } else {
+                    alert('페이스북 API 호출에 실패했습니다');
+                }
+            },
+            { scope: 'publish_pages,manage_pages' }
+        );
+    }
+
+    function getFbAccessToken() {
+        FB.api('/111885793685883/'
+            , 'GET'
+            , { fields: 'access_token' }
+            , function (token_result) {
+                console.log(token_result);
+                postFbPage(token_result);
+            }
+        );
+    }
+
+    function postFbPage(token_result) {
+        FB.api(
+            '/111885793685883/feed'
+            , 'POST'
+            , { access_token: token_result.access_token
+                , message: '내용'
+                , link: '링크 걸 주소'
+                , picture: '링크 이미지'
+                , name: '링크 제목'
+                , description: '링크 설명'
+                , caption: '링크 하단 캡션'
+            }
+            , function (page_result) {
+                if (page_result && !page_result.error) {
+                    alert('성공');
+                }
+            }
+        );
+    }
+
+    function checkLoginState() {               // Called when a person is finished with the Login Button.
+        FB.getLoginStatus(function(response) {   // See the onlogin handler
+            statusChangeCallback(response);
+        });
+    }
+
+    function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+        console.log('statusChangeCallback');
+        if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+            console.log(response.authResponse.accessToken);
+        } else {                                 // Not logged into your webpage or we are unable to tell.
+            console.log("connected fail");
+        }
+    }
+</script>
+</body>
+</html>
