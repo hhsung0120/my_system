@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll()
             .and()
                 .formLogin()
-                .loginPage("/user/login/perform")
+                .loginPage("/users/login/perform")
                 .usernameParameter("userId")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/portfolio/main")

@@ -10,6 +10,8 @@ import java.util.Collection;
 @Getter
 @ToString
 public class AccountUser extends User {
+
+    private String idx;
     private String userId;
 
     public AccountUser(String userId, String userName, String password, Collection<? extends GrantedAuthority> authorities) {
