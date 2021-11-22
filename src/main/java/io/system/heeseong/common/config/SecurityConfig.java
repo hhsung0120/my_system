@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .formLogin()
                 .loginPage("/users/login/perform")
-                .usernameParameter("userId")
+                .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/portfolio/main")
                 .failureUrl("/")

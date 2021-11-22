@@ -20,19 +20,19 @@ public class LoginService implements UserDetailsService {
         return null;
     }
 
-    public AccountUser getAccountUser(String userId, String password){
-        log.info("userId {}", userId);
+    public AccountUser getAccountUser(String email, String password){
+        log.info("email {}", email);
         log.info("password {}", password);
 
         String userName = "test";
         List<GrantedAuthority> roles = new ArrayList<>();
-        if ("user".equals(userId)) {
+        if ("user".equals(email)) {
             roles.add(new SimpleGrantedAuthority("ROLE_USER"));
-        } else if ("admin".equals(userId)) {
+        } else if ("admin".equals(email)) {
             roles.add(new SimpleGrantedAuthority("ROLE_USER"));
             roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         }
 
-        return new AccountUser(userId, userName, password, roles);
+        return new AccountUser(email, userName, password, roles);
     }
 }

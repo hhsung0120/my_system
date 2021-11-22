@@ -12,10 +12,10 @@ import java.util.Collection;
 public class AccountUser extends User {
 
     private String idx;
-    private String userId;
+    private String email;
 
-    public AccountUser(String userId, String userName, String password, Collection<? extends GrantedAuthority> authorities) {
+    public AccountUser(String email, String userName, String password, Collection<? extends GrantedAuthority> authorities) {
         super(userName, password, authorities);
-        this.userId = userId;
+        this.email = email;
     }
 }

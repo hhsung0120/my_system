@@ -19,13 +19,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String userId = (String)authentication.getPrincipal();
+        String email = (String)authentication.getPrincipal();
         String userPassword = (String)authentication.getCredentials();
 
-        log.info("userId {}", userId);
+        log.info("email {}", email);
         log.info("userPassword {}", userPassword);
 
-        AccountUser accountUser = loginService.getAccountUser(userId, userPassword);
+        AccountUser accountUser = loginService.getAccountUser(email, userPassword);
         System.out.println(accountUser.toString());
         System.out.println(accountUser.getUsername());
         System.out.println(accountUser.getAuthorities());
