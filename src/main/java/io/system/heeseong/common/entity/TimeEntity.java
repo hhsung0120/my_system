@@ -16,13 +16,13 @@ import java.time.LocalDateTime;
 public class TimeEntity {
 
     @Column(nullable = false)
-    private String createBy;
+    private String createUser;
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
     private LocalDateTime createDate;
 
-    private String lastModifiedBy;
+    private String lastModifiedUser;
 
     @UpdateTimestamp
     @Column(insertable = false)
@@ -31,7 +31,7 @@ public class TimeEntity {
     public TimeEntity() {
     }
 
-    public TimeEntity(String createBy) {
-        this.createBy = createBy;
+    public TimeEntity(String createUser) {
+        this.createUser = createUser;
     }
 }

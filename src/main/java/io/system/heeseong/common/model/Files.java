@@ -17,19 +17,19 @@ public class Files {
     private String extension;
 
     @Setter
-    private String createBy;
+    private String createUser;
 
     public Files() {
     }
 
     @Builder
-    public Files(Long idx, String uploadPath, String originalFileName, String uuid, String extension, String createBy) {
+    public Files(Long idx, String uploadPath, String originalFileName, String uuid, String extension, String createUser) {
         this.idx = idx;
         this.uploadPath = uploadPath;
         this.originalFileName = originalFileName;
         this.uuid = uuid;
         this.extension = extension;
-        this.createBy = createBy;
+        this.createUser = createUser;
     }
 
     public FileEntity toEntity(Long boardIdx, String tableName){
@@ -40,7 +40,7 @@ public class Files {
                             .extension(extension)
                             .boardIdx(boardIdx)
                             .tableName(tableName)
-                            .createBy(createBy)
+                            .createUser(createUser)
                             .build();
     }
 }

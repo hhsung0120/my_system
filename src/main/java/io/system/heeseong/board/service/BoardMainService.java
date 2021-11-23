@@ -43,7 +43,7 @@ public class BoardMainService {
     private void insertBoard(Board board){
         System.out.println(board.toString());
         System.out.println(board.toEntity());
-        board.setCreateBy("세션userIdx");
+        board.setCreateUser("세션userIdx");
         Long boardIdx = 0L;
         try{
             boardRepository.save(board.toEntity());
@@ -58,7 +58,7 @@ public class BoardMainService {
         for(MultipartFile files : board.getFiles()){
             if(!files.isEmpty()){
                 Files file = fileUpload(files);
-                file.setCreateBy(board.getCreateBy());
+                file.setCreateUser(board.getCreateUser());
                 fileRepository.save(file.toEntity(boardIdx, tableName));
             }
         }

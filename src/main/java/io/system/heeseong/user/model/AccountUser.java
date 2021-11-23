@@ -1,5 +1,6 @@
 package io.system.heeseong.user.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,6 +17,13 @@ public class AccountUser extends User {
 
     public AccountUser(String email, String userName, String password, Collection<? extends GrantedAuthority> authorities) {
         super(userName, password, authorities);
+        this.email = email;
+    }
+
+    @Builder(builderMethodName = "entityToValueObject")
+    public AccountUser(String username, String password, Collection<? extends GrantedAuthority> authorities, String idx, String email) {
+        super(username, password, authorities);
+        this.idx = idx;
         this.email = email;
     }
 }
