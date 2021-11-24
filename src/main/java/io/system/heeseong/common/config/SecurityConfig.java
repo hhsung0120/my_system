@@ -26,33 +26,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                //.antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/**").permitAll()
-            .and()
-                .formLogin()
-                .loginPage("/users/login/perform")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/portfolio/main")
-                .failureUrl("/")
-            .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login/logout")
-                .invalidateHttpSession(true)
-            .and()
-                .exceptionHandling().accessDeniedPage("/login/denied")
-            .and()
-                .authenticationProvider(customAuthenticationProvider)
-            .headers()
-                .frameOptions().disable()
-            .and()
-                .csrf()
-                .ignoringAntMatchers("/boards/**");
-
-
-
+        http.headers().frameOptions().disable()
+                .and()
+                    .authorizeRequests()
+                    .antMatchers("/**").permitAll()
+                .and()
+                    .csrf()
+                    .disable();
+//        http.authorizeRequests()
+//                //.antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/**").permitAll()
+//            .and()
+//                .formLogin()
+//                .loginPage("/users/login/perform")
+//                .usernameParameter("email")
+//                .passwordParameter("password")
+//                .defaultSuccessUrl("/portfolio/main")
+//                .failureUrl("/")
+//            .and()
+//                .logout()
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                .logoutSuccessUrl("/login/logout")
+//                .invalidateHttpSession(true)
+//            .and()
+//                .exceptionHandling().accessDeniedPage("/login/denied")
+//            .and()
+//                .authenticationProvider(customAuthenticationProvider)
+//            .headers()
+//                .frameOptions().disable()
+//            .and()
+//                .csrf()
+//                .ignoringAntMatchers("/boards/**");
     }
 
     @Bean

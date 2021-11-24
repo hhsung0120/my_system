@@ -1,6 +1,5 @@
 package io.system.heeseong.common.util;
 
-import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.crypto.Cipher;
@@ -92,15 +91,5 @@ public class CryptoUtil {
      */
     public static String encryptPassword(String password){
         return new BCryptPasswordEncoder().encode(password);
-    }
-    /*
-     * 패스워드 값 비교
-     * submittedPassword : 입력 패스워드 값
-     * encryptedPassword : DB에 저장된 패스워드 값
-     */
-    public static boolean checkPassword(String submittedPassword, String encryptedPassword){
-        ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
-        passwordEncryptor.setAlgorithm("SHA-512");
-        return passwordEncryptor.checkPassword(submittedPassword, encryptedPassword);
     }
 }

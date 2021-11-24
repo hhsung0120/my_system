@@ -1,5 +1,6 @@
 package io.system.heeseong.user.service;
 
+import io.system.heeseong.common.exception.LoginFailException;
 import io.system.heeseong.common.util.CryptoUtil;
 import io.system.heeseong.user.entity.AccountUserEntity;
 import io.system.heeseong.user.model.AccountUser;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Log4j2
 public class LoginService implements UserDetailsService {
@@ -27,10 +29,17 @@ public class LoginService implements UserDetailsService {
     }
 
     public AccountUser getAccountUser(String email, String password){
-        AccountUserEntity accountUserEntity = accountUserRepository.findByEmail(email);
-        System.out.println(new BCryptPasswordEncoder().matches(password, accountUserEntity.getPassword()));
+        AccountUserEntity accountUserEntity =
+                Optional.ofNullable(accountUserRepository.findByEmail(email))
+                        .orElseThrow(() -> new LoginFailException(LoginFailException.Message.LOGIN_FAIL_EXCEPTION));
+
+        if(!new BCryptPasswordEncoder().matches(password, accountUserEntity.getPassword())){
+            throw new LoginFailException(LoginFailException.Message.LOGIN_FAIL_EXCEPTION);
+        }
+
 
         log.info("all {}", accountUserEntity.toString());
+
 
         String userName = "test";
         List<GrantedAuthority> roles = new ArrayList<>();
@@ -42,8 +51,8 @@ public class LoginService implements UserDetailsService {
 //            roles.add(new SimpleGrantedAuthority("ROLE_USER"));
 //            roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 //        }
+//        return new AccountUser(email, userName, password, roles);
 
-
-        return new AccountUser(email, userName, password, roles);
+        return null;
     }
 }
