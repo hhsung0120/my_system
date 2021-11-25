@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class AccountUserController {
 
+    private Long authExpireTime = 0L;
     final AccountUserService accountUserService;
 
     @GetMapping("/login")
@@ -27,4 +28,28 @@ public class AccountUserController {
         accountUserService.getAccountUser(accountUser);
         return accountUser;
     }
+
+    @ResponseBody
+    @GetMapping("/timeTest")
+    public String time(){
+        Long currentTime = System.currentTimeMillis();
+        Long hour = 60 * 60 * 1000L;
+
+        System.out.println("===============");
+        System.out.println("currentTime => " + currentTime);
+        System.out.println("더하기 => ");
+        System.out.println(authExpireTime + hour);
+        System.out.println("===============");
+        if (currentTime > authExpireTime + hour) {
+//            adminAuthMap.computeIfAbsent(level, (adminAuthList) -> getAdminMenuList(level));
+            authExpireTime = currentTime;
+            System.out.println("sdfsdfsdfsdfsdf");
+        }else{
+            System.out.println("sdfsdf");
+        }
+
+        return "timeTest";
+    }
+
+
 }
