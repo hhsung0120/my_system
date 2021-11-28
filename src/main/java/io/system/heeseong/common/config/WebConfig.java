@@ -1,11 +1,16 @@
 package io.system.heeseong.common.config;
 
+import io.system.heeseong.common.interceptor.CheckLoginInterceptor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer{
@@ -16,6 +21,7 @@ public class WebConfig implements WebMvcConfigurer{
     @Value("${path.default-upload-path}")
     String fileUploadPath;
 
+    List<String> resourcesList = Arrays.asList("/css/**", "/fonts/**", "/js/**", "/smartEditor/**");
     // 업로드 폴더 지정
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -30,18 +36,17 @@ public class WebConfig implements WebMvcConfigurer{
         registry.addRedirectViewController("/","/users/login");
     }
 
+    @Bean
+    CheckLoginInterceptor checkLoginInterceptor(){
+        return new CheckLoginInterceptor();
+    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//		registry.addInterceptor(new TokenCheckInterceptor())
-//				.excludePathPatterns("/docs/**")
-//				.excludePathPatterns("/api/**")
-//				.excludePathPatterns("/test/**")
-//				.excludePathPatterns("/users/login")
-//				.excludePathPatterns("/users/invalidToken")
-//				.excludePathPatterns("/users/signUp")
-//				.excludePathPatterns("/users/signUpDetail")
-//				.addPathPatterns("/**")
-//				;
-
+		registry.addInterceptor(checkLoginInterceptor())
+                .excludePathPatterns("/users/login")
+                .excludePathPatterns(resourcesList)
+                .addPathPatterns("/**")
+				;
     }
 }

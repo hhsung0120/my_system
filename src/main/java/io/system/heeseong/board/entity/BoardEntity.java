@@ -48,7 +48,7 @@ public class BoardEntity extends TimeEntity {
 
     @Builder(builderMethodName = "insertBoard")
     public BoardEntity(Long idx, String tableName, BoardType boardType, String title, String content, String createUser, Long parentCategoryIdx, Long childCategoryIdx) {
-        super(createUser);
+        super.setCreateUserAndTime(createUser);
         this.idx = idx;
         this.tableName = tableName;
         this.boardType = boardType;

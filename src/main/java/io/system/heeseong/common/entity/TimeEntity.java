@@ -18,20 +18,22 @@ public class TimeEntity {
     @Column(nullable = false)
     private String createUser;
 
-    @CreationTimestamp
-    @Column(updatable = false, nullable = false)
+    @Column(nullable = false)
     private LocalDateTime createDate;
 
-    private String lastModifiedUser;
+    @Column(nullable = false)
+    private String modifiedUser;
 
-    @UpdateTimestamp
-    @Column(insertable = false)
-    private LocalDateTime lastModifiedDate;
+    @Column(nullable = false)
+    private LocalDateTime modifiedDate;
 
     public TimeEntity() {
     }
 
-    public TimeEntity(String createUser) {
+    public void setCreateUserAndTime(String createUser){
         this.createUser = createUser;
+        this.createDate = LocalDateTime.now();
+        this.modifiedUser = createUser;
+        this.modifiedDate = LocalDateTime.now();
     }
 }

@@ -1,28 +1,33 @@
 package io.system.heeseong.common.interceptor;
 
+import io.system.heeseong.user.model.AccountUser;
+import io.system.heeseong.user.service.AccountUserService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+@Slf4j
+public class CheckLoginInterceptor implements AsyncHandlerInterceptor {
 
-
-public class CheckLoginInterceptor extends HandlerInterceptorAdapter {
-
-//	@Autowired
-//	private AccountService accountService;
+	@Autowired
+	private AccountUserService accountUserService;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
-//		AccountUser accountUser = accountService.getSessionAccountUser();
-//
-//		if(accountUser==null){
-//			String contextPath = request.getContextPath();
-//			response.sendRedirect(contextPath+"/");
-//			return false;
-//		}
+
+		AccountUser accountUser = accountUserService.getSessionAccountUser();
+
+		if(accountUser == null){
+			String contextPath = request.getContextPath();
+			response.sendRedirect(contextPath+"/users/login");
+			return false;
+		}
 
 		return true;
 	}

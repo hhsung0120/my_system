@@ -12,25 +12,26 @@ import java.util.Collection;
 @ToString
 //public class AccountUser extends User {
 public class AccountUser{
-    private String idx;
+    private Long idx;
     private String email;
     private String password;
     private String userName;
-    private String userAuth;
+    private String status;
+    private String role;
 
     public AccountUser() {
     }
 
     @Builder(builderMethodName = "entityToValueObject")
-    public AccountUser(String idx, String email, String password, String userName, String userAuth) {
+    public AccountUser(Long idx, String email, String password, String userName, String status, String role) {
         this.idx = idx;
         this.email = email;
         this.password = password;
         this.userName = userName;
-        this.userAuth = userAuth;
+        this.status = status;
+        this.role = role;
     }
-
-//    public AccountUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    //    public AccountUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 //        super(username, password, authorities);
 //    }
 //

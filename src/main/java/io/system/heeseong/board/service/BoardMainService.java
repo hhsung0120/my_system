@@ -41,9 +41,9 @@ public class BoardMainService {
     }
 
     private void insertBoard(Board board){
-        System.out.println(board.toString());
-        System.out.println(board.toEntity());
-        board.setCreateUser("세션userIdx");
+        board.setCreateUserAndDate("세션userIdx");
+
+
         Long boardIdx = 0L;
         try{
             boardRepository.save(board.toEntity());
@@ -58,7 +58,7 @@ public class BoardMainService {
         for(MultipartFile files : board.getFiles()){
             if(!files.isEmpty()){
                 Files file = fileUpload(files);
-                file.setCreateUser(board.getCreateUser());
+                file.setCreateUser(board.getCreateUserAndDate());
                 fileRepository.save(file.toEntity(boardIdx, tableName));
             }
         }

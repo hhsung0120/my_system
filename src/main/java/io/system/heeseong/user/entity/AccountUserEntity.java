@@ -1,6 +1,7 @@
 package io.system.heeseong.user.entity;
 
 import io.system.heeseong.common.enumcode.UserStatus;
+import io.system.heeseong.user.model.AccountUser;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -43,5 +44,15 @@ public class AccountUserEntity {
                 ", status=" + status +
                 ", role='" + role + '\'' +
                 '}';
+    }
+
+    public AccountUser entityToValueObject(){
+        return AccountUser.entityToValueObject()
+                            .idx(idx)
+                            .email(email)
+                            .userName(userName)
+                            .status(status.toString())
+                            .role(role)
+                            .build();
     }
 }

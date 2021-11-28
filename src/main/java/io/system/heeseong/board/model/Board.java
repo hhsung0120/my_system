@@ -22,7 +22,7 @@ public class Board {
     private List<MultipartFile> files;
 
     @Setter
-    private String createUser;
+    private String createUserAndDate;
 
     public Board() {
     }
@@ -40,7 +40,7 @@ public class Board {
                 .childCategoryIdx(childCategoryIdx)
                 .title(title)
                 .content(content)
-                .createUser(createUser)
+                .createUser(createUserAndDate)
                 .build();
     }
 }
