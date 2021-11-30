@@ -43,11 +43,7 @@ public class AccountUserService {
     }
 
     public AccountUser getSessionAccountUser(){
-        System.out.println("sdfsdfsdf????");
-        AccountUser accountUser = (AccountUser)httpSession.getAttribute("accountUser");
-        if(accountUser == null) return null;
-        return accountUser;
-//        return (AccountUser) Optional.ofNullable(httpSession.getAttribute("accountUser"))
-//                        .orElseGet(null);
+        return (AccountUser) Optional.ofNullable(httpSession.getAttribute("accountUser"))
+                                     .orElseGet(null);
     }
 }
