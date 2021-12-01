@@ -21,7 +21,7 @@ public class WebConfig implements WebMvcConfigurer{
     @Value("${path.default-upload-path}")
     String fileUploadPath;
 
-    List<String> resourcesList = Arrays.asList("/css/**", "/fonts/**", "/js/**", "/smartEditor/**");
+    List<String> resourcesList = Arrays.asList("/css/**", "/fonts/**", "/js/**", "/smartEditor/**", "/favicon.ico");
     // 업로드 폴더 지정
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

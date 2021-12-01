@@ -42,10 +42,14 @@
         $.ajax({
             url : "/users/login"
             , method : "POST"
-            , dataType : 'json'
+            , dataType : 'text'
             , data : $('#dataForm').serialize()
             , success : function(data){
-                console.log(data);
+                if(data > 0){
+                    location.href = '/portfolio/main';
+                }else{
+                    alert('로그인 실패')
+                }
             } ,error:function(x,error){
                 console.log(x);
                 console.log(error);

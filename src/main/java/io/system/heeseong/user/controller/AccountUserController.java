@@ -23,10 +23,8 @@ public class AccountUserController {
 
     @ResponseBody
     @PostMapping("/login")
-    public AccountUser login(@ModelAttribute AccountUser accountUser){
-        log.info("accountUser {}", accountUser.toString());
-        accountUserService.getAccountUser(accountUser);
-        return accountUser;
+    public Long login(@ModelAttribute AccountUser accountUser){
+        return accountUserService.getAccountUserIdx(accountUser);
     }
 
     @ResponseBody

@@ -17,7 +17,6 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         Map<String, Object> result = new HashMap<>();
         result.put("USE", "N");
         result.put("MSG", "잘못된 아이디 또는 패스워드 입니다.");
-        System.out.println(exception.getMessage());
         return ResponseEntity.ok(result);
     }
 }
