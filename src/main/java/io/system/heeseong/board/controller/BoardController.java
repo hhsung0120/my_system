@@ -4,7 +4,7 @@ import io.system.heeseong.board.model.Board;
 import io.system.heeseong.board.service.BoardDetailService;
 import io.system.heeseong.board.service.BoardMainService;
 import io.system.heeseong.common.enumtype.BoardType;
-import io.system.heeseong.common.model.Files;
+import io.system.heeseong.common.domain.model.Files;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

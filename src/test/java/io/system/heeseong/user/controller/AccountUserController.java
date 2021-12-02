@@ -15,8 +15,6 @@ public class AccountUserController {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         System.out.println(bCryptPasswordEncoder.encode("gksgmltjd1!"));
         System.out.println(bCryptPasswordEncoder.matches("gksgmltjd1!", "$2a$10$nGytNer4Aisc1G8GI6q8.Oya6eoq5sdfDCaS1SI1915ufn7iYyiAt4PW"));
-
-
     }
 
 }

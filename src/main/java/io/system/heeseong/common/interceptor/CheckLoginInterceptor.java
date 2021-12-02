@@ -22,11 +22,11 @@ public class CheckLoginInterceptor implements AsyncHandlerInterceptor {
 
 		AccountUser accountUser = accountUserService.getSessionAccountUser();
 
-		if(accountUser == null){
-			String contextPath = request.getContextPath();
-			response.sendRedirect(contextPath+"/users/login");
-			return false;
-		}
+//		if(accountUser == null){
+//			String contextPath = request.getContextPath();
+//			response.sendRedirect(contextPath+"/users/login");
+//			return false;
+//		}
 
 		return true;
 	}

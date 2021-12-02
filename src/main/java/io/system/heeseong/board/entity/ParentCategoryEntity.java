@@ -1,7 +1,7 @@
 package io.system.heeseong.board.entity;
 
 import io.system.heeseong.board.model.Category;
-import io.system.heeseong.common.entity.TimeEntity;
+import io.system.heeseong.common.domain.entity.TimeEntity;
 import lombok.Getter;
 
 import javax.persistence.*;

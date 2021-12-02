@@ -1,7 +1,7 @@
 package io.system.heeseong.board.entity;
 
-import io.system.heeseong.common.entity.TimeEntity;
-import io.system.heeseong.common.entity.FileEntity;
+import io.system.heeseong.common.domain.entity.TimeEntity;
+import io.system.heeseong.common.domain.entity.FileEntity;
 import io.system.heeseong.common.enumtype.BoardType;
 import lombok.Builder;
 import lombok.Getter;

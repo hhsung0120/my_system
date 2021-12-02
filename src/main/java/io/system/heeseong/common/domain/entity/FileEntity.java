@@ -1,4 +1,4 @@
-package io.system.heeseong.common.entity;
+package io.system.heeseong.common.domain.entity;
 
 import lombok.Builder;
 import lombok.Getter;

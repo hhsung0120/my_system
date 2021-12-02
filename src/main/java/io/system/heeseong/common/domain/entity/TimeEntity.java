@@ -1,8 +1,6 @@
-package io.system.heeseong.common.entity;
+package io.system.heeseong.common.domain.entity;
 
 import lombok.Getter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;

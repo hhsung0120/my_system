@@ -1,5 +1,6 @@
 package io.system.heeseong.user.controller;
 
+import io.system.heeseong.common.service.MenuService;
 import io.system.heeseong.user.model.AccountUser;
 import io.system.heeseong.user.service.AccountUserService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ public class AccountUserController {
 
     private Long authExpireTime = 0L;
     final AccountUserService accountUserService;
+    final MenuService menuService;
 
     @GetMapping("/login")
     public String login(){
@@ -49,5 +51,10 @@ public class AccountUserController {
         return "timeTest";
     }
 
-
+    @ResponseBody
+    @GetMapping("/menuTest")
+    public String menu(){
+        menuService.getMenuList();
+        return "menuTest";
+    }
 }

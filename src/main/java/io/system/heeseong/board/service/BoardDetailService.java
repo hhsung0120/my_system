@@ -7,7 +7,7 @@ import io.system.heeseong.board.model.Category;
 import io.system.heeseong.board.repository.BoardRepository;
 import io.system.heeseong.board.repository.ChildCategoryRepository;
 import io.system.heeseong.board.repository.ParentCategoryRepository;
-import io.system.heeseong.common.repository.FileRepository;
+import io.system.heeseong.common.domain.repository.FileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

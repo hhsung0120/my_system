@@ -2,9 +2,8 @@ package io.system.heeseong.board.service;
 
 import io.system.heeseong.board.model.Board;
 import io.system.heeseong.board.repository.BoardRepository;
-import io.system.heeseong.common.entity.FileEntity;
-import io.system.heeseong.common.model.Files;
-import io.system.heeseong.common.repository.FileRepository;
+import io.system.heeseong.common.domain.model.Files;
+import io.system.heeseong.common.domain.repository.FileRepository;
 import io.system.heeseong.common.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,9 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
-import java.io.File;
-import java.util.Objects;
-import java.util.Optional;
 
 @Slf4j
 @Service

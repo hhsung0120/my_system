@@ -1,6 +1,6 @@
 package io.system.heeseong.common.util;
 
-import io.system.heeseong.common.model.Files;
+import io.system.heeseong.common.domain.model.Files;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.util.StringUtils;

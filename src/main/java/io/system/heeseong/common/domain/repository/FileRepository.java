@@ -1,6 +1,6 @@
-package io.system.heeseong.common.repository;
+package io.system.heeseong.common.domain.repository;
 
-import io.system.heeseong.common.entity.FileEntity;
+import io.system.heeseong.common.domain.entity.FileEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

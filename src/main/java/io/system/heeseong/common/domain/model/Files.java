@@ -1,6 +1,6 @@
-package io.system.heeseong.common.model;
+package io.system.heeseong.common.domain.model;
 
-import io.system.heeseong.common.entity.FileEntity;
+import io.system.heeseong.common.domain.entity.FileEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
