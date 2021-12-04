@@ -16,6 +16,6 @@ public class PostConstructBean {
 
     @PostConstruct
     public void init(){
-        menuService.setMenuList();
+        //원래 이 타이밍에 모든 메뉴를 미리 셋팅 해 두려 했으나 다시 설계        
     }
 }

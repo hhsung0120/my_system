@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="/common/fragment::head"/>
+<body>
+<div class="container">
+    <div class="wrapper error_wrapper">
+        <!-- container -->
+        <section class="container error_page">
+            <section class="error_wrap" th:if="${code == '404'}">
+                <div class="error_title">
+                    <h1>요청하신 페이지를 찾을 수 없습니다.</h1>
+                </div>
+                <div class="error_info">
+                    <h2>점검 이미지</h2>
+                    <p>
+                        페이지 주소가 잘못 입력되었거나 변경되어 페이지를 찾을 수 없습니다.<br>
+                        주소를 다시 확인해주시기 바랍니다.
+                    </p>
+                </div>
+                <div class="error_btn">
+                    <button type="button" onclick="goLocation();">메인으로 이동</button>
+                </div>
+            </section>
+
+            <section class="error_wrap" th:if="${code == '403'}">
+                <div class="error_title">
+                    <h1>권한이 없습니다.</h1>
+                </div>
+                <div class="error_info">
+                    <h2>점검 이미지</h2>
+                    <p>
+                        다시 시도해 주시기 바랍니다.
+                    </p>
+                </div>
+                <div class="error_btn">
+                    <button type="button" onclick="goLocation();">메인으로 이동</button>
+                </div>
+            </section>
+
+            <section class="error_wrap" th:if="${code != '403' and code != '404'}">
+                <div class="error_title">
+                    <h1>일시적인 오류가 발생하였습니다.</h1>
+                </div>
+                <div class="error_info">
+                    <h2>점검 이미지</h2>
+                    <p>
+                        서비스 이용에 불편을 끼쳐드려 죄송합니다.<br>
+                        잠시 후 다시 시도해 주시기 바랍니다.
+                    </p>
+                </div>
+                <div class="error_btn">
+                    <button type="button" onclick="goLocation();">메인으로 이동</button>
+                </div>
+            </section>
+        </section>
+        <!-- //container -->
+    </div>
+</div>
+<script type="text/javascript">
+    goLocation = function() {
+        location.href = "/";
+    };
+</script>
+</body>
+</html>

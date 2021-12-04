@@ -20,10 +20,10 @@ public class TimeEntity {
     private LocalDateTime createDate;
 
     @Column(nullable = false)
-    private String modifiedUser;
+    private String updateUser;
 
     @Column(nullable = false)
-    private LocalDateTime modifiedDate;
+    private LocalDateTime updateDate;
 
     public TimeEntity() {
     }
@@ -31,7 +31,7 @@ public class TimeEntity {
     public void setCreateUserAndTime(String createUser){
         this.createUser = createUser;
         this.createDate = LocalDateTime.now();
-        this.modifiedUser = createUser;
-        this.modifiedDate = LocalDateTime.now();
+        this.updateUser = createUser;
+        this.updateDate = LocalDateTime.now();
     }
 }
