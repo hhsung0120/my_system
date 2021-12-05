@@ -1,6 +1,6 @@
 package io.system.heeseong.user.entity;
 
-import io.system.heeseong.common.enumcode.UserStatus;
+import io.system.heeseong.common.code.UserStatus;
 import io.system.heeseong.user.model.AccountUser;
 import lombok.Getter;
 

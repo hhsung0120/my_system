@@ -1,6 +1,6 @@
 package io.system.heeseong.common.controller;
 
-import io.system.heeseong.common.service.MenuService;
+import io.system.heeseong.user.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

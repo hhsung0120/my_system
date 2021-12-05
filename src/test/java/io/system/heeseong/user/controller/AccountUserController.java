@@ -1,14 +1,12 @@
 package io.system.heeseong.user.controller;
 
-import io.system.heeseong.common.service.MenuService;
+import io.system.heeseong.user.service.MenuService;
 import io.system.heeseong.common.util.CryptoUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.test.web.servlet.ResultActions;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -28,7 +26,7 @@ public class AccountUserController {
 
     @Test
     public void getMenuList() {
-        menuService.getMenuList();
+        //menuService.getMenuList();
     }
 
     @Test

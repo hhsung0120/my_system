@@ -1,6 +1,6 @@
 package io.system.heeseong.common.component;
 
-import io.system.heeseong.common.service.MenuService;
+import io.system.heeseong.user.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

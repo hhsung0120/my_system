@@ -15,10 +15,10 @@ public class CustomErrorController implements ErrorController {
     @RequestMapping("/error")
     public ModelAndView handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-        //HttpStatus httpStatus = HttpStatus.valueOf(Integer.valueOf(status.toString()));
+        HttpStatus httpStatus = HttpStatus.valueOf(Integer.valueOf(status.toString()));
         return new ModelAndView("/common/error")
                     .addObject("code", status.toString())
-                    //.addObject("message", httpStatus.getReasonPhrase())
+                    .addObject("message", httpStatus.getReasonPhrase())
                     ;
     }
 }

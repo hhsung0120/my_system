@@ -1,4 +1,4 @@
-package io.system.heeseong.common.domain.model;
+package io.system.heeseong.user.model;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -12,19 +12,15 @@ public class Menu {
     private String menuName;
     private String menuUri;
     private String description;
-    private int orderBy;
-    private String useYn;
 
     public Menu() {
     }
 
     @Builder(builderMethodName = "entityToValueObject")
-    public Menu(Long idx, String menuName, String menuUri, String description, int orderBy, String useYn) {
+    public Menu(Long idx, String menuName, String menuUri, String description) {
         this.idx = idx;
         this.menuName = menuName;
         this.menuUri = menuUri;
         this.description = description;
-        this.orderBy = orderBy;
-        this.useYn = useYn;
     }
 }

@@ -1,8 +1,7 @@
 package io.system.heeseong.user.service;
 
-import io.system.heeseong.common.domain.model.Menu;
+import io.system.heeseong.user.model.Menu;
 import io.system.heeseong.common.exception.LoginFailException;
-import io.system.heeseong.common.service.MenuService;
 import io.system.heeseong.user.entity.AccountUserEntity;
 import io.system.heeseong.user.model.AccountUser;
 import io.system.heeseong.user.reposiroty.AccountUserRepository;
@@ -21,7 +20,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountUserService {
 
-    private List<Menu> myMenuList = new ArrayList<>();
+    private List<Menu> menuList = new ArrayList<>();
 
     final AccountUserRepository accountUserRepository;
 
@@ -42,17 +41,27 @@ public class AccountUserService {
             throw new LoginFailException(LoginFailException.Message.LOGIN_FAIL_EXCEPTION);
         }
 
-        //세션 셋팅
-        setSessionAccountUser(accountUserEntity.entityToValueObject());
+        dataSetting(accountUserEntity.entityToValueObject());
 
-        System.out.println(accountUserEntity.entityToValueObject());
-        //자기 자신 메뉴 셋팅
-
-
-        menuService.getMenuList();
 
         return accountUserEntity.entityToValueObject();
     }
+
+    //세션, 메뉴 리스트 셋팅
+    private void dataSetting(AccountUser accountUser) {
+        setSessionAccountUser(accountUser);
+        menuList = menuService.selectMyMenuPermissionList(accountUser.getRole());
+    }
+
+    public List<Menu> getMenuPermissionList(){
+        return menuList;
+    }
+
+    public void reloadMenuPermissionList(){
+        AccountUser accountUser = this.getSessionAccountUser();
+        menuList = menuService.selectMyMenuPermissionList(accountUser.getRole());
+    }
+
 
     public void setSessionAccountUser(AccountUser accountUser){
         httpSession.setAttribute("accountUser", accountUser);

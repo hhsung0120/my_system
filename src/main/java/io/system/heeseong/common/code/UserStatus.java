@@ -1,4 +1,4 @@
-package io.system.heeseong.common.enumcode;
+package io.system.heeseong.common.code;
 
 public enum UserStatus {
     NORMAL("정상")

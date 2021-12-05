@@ -1,8 +1,8 @@
-package io.system.heeseong.common.domain.entity;
+package io.system.heeseong.user.entity;
 
-import io.system.heeseong.common.domain.model.Menu;
+import io.system.heeseong.common.domain.entity.TimeEntity;
+import io.system.heeseong.user.model.Menu;
 import lombok.Getter;
-import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -15,7 +15,7 @@ public class MenuPermissionEntity extends TimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_idx")
     private MenuEntity menuEntity;
 
@@ -28,6 +28,9 @@ public class MenuPermissionEntity extends TimeEntity {
     public Menu entityToValueObject(){
         return Menu.entityToValueObject()
                     .idx(idx)
+                    .menuUri(menuEntity.getMenuUri())
+                    .menuName(menuEntity.getMenuName())
+                    .description(menuEntity.getDescription())
                     .build();
     }
 

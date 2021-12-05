@@ -1,5 +1,6 @@
-package io.system.heeseong.common.domain.entity;
+package io.system.heeseong.user.entity;
 
+import io.system.heeseong.common.domain.entity.TimeEntity;
 import lombok.Getter;
 import lombok.ToString;
 
