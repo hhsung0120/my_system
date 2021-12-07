@@ -36,7 +36,7 @@ public class FileEntity extends TimeEntity {
     }
 
     @Builder(builderMethodName = "fileInsert")
-    public FileEntity(String tableName, Long boardIdx, String originalFileName, String uuid, String extension, String uploadPath, String createUser) {
+    public FileEntity(String tableName, Long boardIdx, String originalFileName, String uuid, String extension, String uploadPath, Long createUser) {
         super.setCreateUserAndTime(createUser);
         this.tableName = tableName;
         this.boardIdx = boardIdx;

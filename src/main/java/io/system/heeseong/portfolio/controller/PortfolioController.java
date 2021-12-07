@@ -1,6 +1,5 @@
 package io.system.heeseong.portfolio.controller;
 
-import io.system.heeseong.common.enumtype.BoardType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,7 @@ public class PortfolioController {
     @GetMapping("/form")
     public ModelAndView form(){
         return new ModelAndView("/board/form")
-                .addObject("boardType", BoardType.PORTFOLIO);
+                .addObject("boardType", "portfolio");
     }
 
 

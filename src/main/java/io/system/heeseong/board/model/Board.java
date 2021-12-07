@@ -1,7 +1,6 @@
 package io.system.heeseong.board.model;
 
 import io.system.heeseong.board.entity.BoardEntity;
-import io.system.heeseong.common.enumtype.BoardType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,7 +13,7 @@ import java.util.List;
 public class Board {
 
     private Long idx;
-    private BoardType boardType;
+    private String boardType;
     private Long parentCategoryIdx;
     private Long childCategoryIdx;
     private String title;
@@ -22,12 +21,12 @@ public class Board {
     private List<MultipartFile> files;
 
     @Setter
-    private String createUserAndDate;
+    private Long createUser;
 
     public Board() {
     }
 
-    public Board(Long idx, BoardType boardType) {
+    public Board(Long idx, String boardType) {
         this.idx = idx;
         this.boardType = boardType;
     }
@@ -35,12 +34,12 @@ public class Board {
     public BoardEntity toEntity(){
         return BoardEntity.insertBoard()
                 .tableName("board")
-                .boardType(BoardType.BOARD)
+                .boardType("board")
                 .parentCategoryIdx(parentCategoryIdx)
                 .childCategoryIdx(childCategoryIdx)
                 .title(title)
                 .content(content)
-                .createUser(createUserAndDate)
+                .createUser(createUser)
                 .build();
     }
 }

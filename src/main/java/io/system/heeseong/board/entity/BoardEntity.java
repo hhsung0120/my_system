@@ -1,8 +1,7 @@
 package io.system.heeseong.board.entity;
 
-import io.system.heeseong.common.domain.entity.TimeEntity;
 import io.system.heeseong.common.domain.entity.FileEntity;
-import io.system.heeseong.common.enumtype.BoardType;
+import io.system.heeseong.common.domain.entity.TimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -19,9 +18,8 @@ public class BoardEntity extends TimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private BoardType boardType;
+    private String boardType;
 
     @Transient
     private String tableName;
@@ -47,7 +45,7 @@ public class BoardEntity extends TimeEntity {
     }
 
     @Builder(builderMethodName = "insertBoard")
-    public BoardEntity(Long idx, String tableName, BoardType boardType, String title, String content, String createUser, Long parentCategoryIdx, Long childCategoryIdx) {
+    public BoardEntity(Long idx, String tableName, String boardType, String title, String content, Long createUser, Long parentCategoryIdx, Long childCategoryIdx) {
         super.setCreateUserAndTime(createUser);
         this.idx = idx;
         this.tableName = tableName;

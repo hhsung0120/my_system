@@ -3,7 +3,6 @@ package io.system.heeseong.board.controller;
 import io.system.heeseong.board.model.Board;
 import io.system.heeseong.board.service.BoardDetailService;
 import io.system.heeseong.board.service.BoardMainService;
-import io.system.heeseong.common.enumtype.BoardType;
 import io.system.heeseong.common.domain.model.Files;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,11 +31,12 @@ public class BoardController {
         return "/board/list";
     }
 
-    @GetMapping("/form")
-    public ModelAndView form(){
+    @GetMapping("/form/{boardType}")
+    public ModelAndView form(@PathVariable String boardType){
         return new ModelAndView("/board/form")
-                     .addObject("parentCategoryList", boardDetailService.getParentCategoryList())
-                     .addObject("childCategoryList", boardDetailService.getChildCategoryList())
+                    .addObject("parentCategoryList", boardDetailService.getParentCategoryList())
+                    .addObject("childCategoryList", boardDetailService.getChildCategoryList())
+                    .addObject("boardType", boardType)
                     ;
     }
 
@@ -84,9 +84,9 @@ public class BoardController {
         listInMap.add(data2);
 
         List<Board> listInBoard = new ArrayList<>();
-        Board board = new Board(1L, BoardType.BOARD);
-        Board board1 = new Board(1L,BoardType.BOARD);
-        Board board2 = new Board(1L, BoardType.BOARD);
+        Board board = new Board(1L, "board");
+        Board board1 = new Board(1L, "board");
+        Board board2 = new Board(1L, "board");
         listInBoard.add(board);
         listInBoard.add(board1);
         listInBoard.add(board2);

@@ -17,13 +17,13 @@ public class Files {
     private String extension;
 
     @Setter
-    private String createUser;
+    private Long createUser;
 
     public Files() {
     }
 
     @Builder
-    public Files(Long idx, String uploadPath, String originalFileName, String uuid, String extension, String createUser) {
+    public Files(Long idx, String uploadPath, String originalFileName, String uuid, String extension, Long createUser) {
         this.idx = idx;
         this.uploadPath = uploadPath;
         this.originalFileName = originalFileName;

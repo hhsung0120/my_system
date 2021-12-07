@@ -14,13 +14,13 @@ import java.time.LocalDateTime;
 public class TimeEntity {
 
     @Column(nullable = false)
-    private String createUser;
+    private Long createUser;
 
     @Column(nullable = false)
     private LocalDateTime createDate;
 
     @Column(nullable = false)
-    private String updateUser;
+    private Long updateUser;
 
     @Column(nullable = false)
     private LocalDateTime updateDate;
@@ -28,7 +28,7 @@ public class TimeEntity {
     public TimeEntity() {
     }
 
-    public void setCreateUserAndTime(String createUser){
+    public void setCreateUserAndTime(Long createUser){
         this.createUser = createUser;
         this.createDate = LocalDateTime.now();
         this.updateUser = createUser;

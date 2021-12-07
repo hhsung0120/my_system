@@ -5,6 +5,7 @@ import io.system.heeseong.board.repository.BoardRepository;
 import io.system.heeseong.common.domain.model.Files;
 import io.system.heeseong.common.domain.repository.FileRepository;
 import io.system.heeseong.common.util.FileUtil;
+import io.system.heeseong.user.service.AccountUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,8 +20,10 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 public class BoardMainService {
 
-    private final BoardRepository boardRepository;
-    private final FileRepository fileRepository;
+    final AccountUserService accountUserService;
+
+    final BoardRepository boardRepository;
+    final FileRepository fileRepository;
 
     @Value("${path.default-upload-path}")
     private String uploadPath;
@@ -37,7 +40,7 @@ public class BoardMainService {
     }
 
     private void insertBoard(Board board){
-        board.setCreateUserAndDate("세션userIdx");
+        board.setCreateUser(accountUserService.getSessionAccountUser().getIdx());
 
 
         Long boardIdx = 0L;
@@ -54,7 +57,7 @@ public class BoardMainService {
         for(MultipartFile files : board.getFiles()){
             if(!files.isEmpty()){
                 Files file = fileUpload(files);
-                file.setCreateUser(board.getCreateUserAndDate());
+                file.setCreateUser(board.getCreateUser());
                 fileRepository.save(file.toEntity(boardIdx, tableName));
             }
         }
