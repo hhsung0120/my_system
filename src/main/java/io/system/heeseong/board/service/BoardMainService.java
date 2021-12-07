@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -40,19 +41,10 @@ public class BoardMainService {
     }
 
     private void insertBoard(Board board){
-        board.setCreateUser(accountUserService.getSessionAccountUser().getIdx());
+        board.setCreateUser(1L);
 
-
-        Long boardIdx = 0L;
-        try{
-            boardRepository.save(board.toEntity());
-
-//            Long boardIdx = Optional.ofNullable(boardRepository.save(board.toEntity()).getIdx())
-//                    .orElseThrow(() -> new RuntimeException("오류"));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
+        Long boardIdx = Optional.ofNullable(boardRepository.save(board.toEntity()).getIdx())
+                           .orElseThrow(() -> new RuntimeException("오류"));
 
         for(MultipartFile files : board.getFiles()){
             if(!files.isEmpty()){

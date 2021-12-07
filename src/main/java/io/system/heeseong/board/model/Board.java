@@ -33,8 +33,8 @@ public class Board {
 
     public BoardEntity toEntity(){
         return BoardEntity.insertBoard()
-                .tableName("board")
-                .boardType("board")
+                .tableName(boardType)
+                .boardType(boardType)
                 .parentCategoryIdx(parentCategoryIdx)
                 .childCategoryIdx(childCategoryIdx)
                 .title(title)
