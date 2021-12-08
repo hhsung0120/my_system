@@ -21,7 +21,7 @@ public class Board {
     private List<MultipartFile> files;
 
     @Setter
-    private Long createUser;
+    private String createUser;
 
     public Board() {
     }

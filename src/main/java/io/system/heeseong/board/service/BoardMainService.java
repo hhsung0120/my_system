@@ -29,8 +29,6 @@ public class BoardMainService {
     @Value("${path.default-upload-path}")
     private String uploadPath;
 
-    private String tableName = "board";
-
     @Transactional
     public void saveBoard(Board board){
         if(board.getIdx() == null){
@@ -41,7 +39,9 @@ public class BoardMainService {
     }
 
     private void insertBoard(Board board){
-        board.setCreateUser(1L);
+        String tableName = "board";
+        //무조건 있음 인터셉터에서 검사 하기때문에
+        board.setCreateUser(accountUserService.getSessionAccountUser().getEmail());
 
         Long boardIdx = Optional.ofNullable(boardRepository.save(board.toEntity()).getIdx())
                            .orElseThrow(() -> new RuntimeException("오류"));

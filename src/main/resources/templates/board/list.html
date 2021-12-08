@@ -37,7 +37,15 @@
             </tr>
             </tbody>
         </table>
+        <div class="text_right">
+            <button type="buttion" class="btn btn-default" onclick="createBoard();">등록</button>
+        </div>
     </div>
 </div> <!-- /container -->
+<script th:inline="javascript">
+    createBoard = function(){
+        location.href="/boards/form/" + [[${boardType}]];
+    }
+</script>
 </body>
 </html>

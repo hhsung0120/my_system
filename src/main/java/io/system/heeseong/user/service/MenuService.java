@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -22,24 +22,9 @@ public class MenuService {
     public List<Menu> selectMyMenuPermissionList(String role){
         return menuPermissionRepository.findByRole(role)
                 .stream()
-                    .filter(list -> "y".equalsIgnoreCase(list.getMenuEntity().getUseYn()))
+                    .filter(MenuPermissionEntity::isUseYn)
                     .map(list -> list.entityToValueObject())
+                    .sorted(Comparator.comparing(Menu::getOrder))
                     .collect(toList());
-    }
-
-    public void setMenuList() {
-//        menuList = menuRepository.findAll()
-//                                    .stream()
-//                                    .filter(list -> list.getUseYn().equalsIgnoreCase("y"))
-//                                    .map(list ->
-//                                            Menu.entityToValueObject()
-//                                                .idx(list.getIdx())
-//                                                .menuUri(list.getMenuUri())
-//                                                .menuName(list.getMenuName())
-//                                                .description(list.getDescription())
-//                                                .useYn(list.getUseYn())
-//                                                .orderBy(list.getOrderBy())
-//                                                .build()
-//                                    ).collect(toList());
     }
 }

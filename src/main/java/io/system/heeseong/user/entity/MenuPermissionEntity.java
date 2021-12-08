@@ -31,7 +31,12 @@ public class MenuPermissionEntity extends TimeEntity {
                     .menuUri(menuEntity.getMenuUri())
                     .menuName(menuEntity.getMenuName())
                     .description(menuEntity.getDescription())
+                    .order(menuEntity.getOrder())
                     .build();
+    }
+
+    public boolean isUseYn(){
+        return "y".equalsIgnoreCase(menuEntity.getUseYn());
     }
 
     @Override

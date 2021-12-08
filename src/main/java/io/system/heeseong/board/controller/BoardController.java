@@ -29,8 +29,11 @@ public class BoardController {
 
 
     @GetMapping
-    public String list(){
-        return "/board/list";
+    public ModelAndView list(@RequestParam(required = false, defaultValue = "board", value = "boardType") String boardType){
+        //TODO 서비스에서 겟 할때 보드타입 검사하기
+        return new ModelAndView("/board/list")
+                    .addObject("boardType", boardType)
+                    ;
     }
 
     @GetMapping("/form/{boardType}")
@@ -44,9 +47,9 @@ public class BoardController {
 
     @ResponseBody
     @PostMapping("/form")
-    public ResponseEntity<ResponseData> save(@ModelAttribute Board board){
+    public String save(@ModelAttribute Board board){
         boardMainService.saveBoard(board);
-        return ResponseEntity.ok(new ResponseData());
+        return "test";
     }
 
     @GetMapping("/{boardId}")

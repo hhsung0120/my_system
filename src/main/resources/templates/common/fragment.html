@@ -59,8 +59,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">메뉴 <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="javascript:">공과금</a></li>
-                            <li><a href="/facebook/list">페이스북</a></li>
+
+                            <li th:each="list : ${menuList}">
+                                <a th:href="${list.menuUri}" th:text="${list.menuName}"></a>
+                            </li>
+                            <!--<li><a href="javascript:">공과금</a></li>
+                            <li><a href="/facebook/list">페이스북</a></li>-->
                             <!--<li class="divider"></li>
                             <li class="dropdown-header">Nav header</li>
                             <li><a href="#">Separated link</a></li>
@@ -93,6 +97,5 @@
         });
     </script>
 </div>
-
 </body>
 </html>

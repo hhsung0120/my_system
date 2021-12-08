@@ -9,8 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/portfolio")
 public class PortfolioController {
 
+    @GetMapping
+    public String index(){
+        return "redirect:/portfolio/main";
+    }
+
     @GetMapping("/main")
-    public String home(){
+    public String main(){
         return "/portfolio/list";
     }
 

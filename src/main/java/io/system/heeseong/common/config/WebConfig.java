@@ -56,9 +56,9 @@ public class WebConfig implements WebMvcConfigurer{
                 .addPathPatterns("/**")
 		;
 
-//        registry.addInterceptor(menuPermissionCheckInterceptor())
-//                .excludePathPatterns(resourcesList)
-//                .addPathPatterns("/**")
-//        ;
+        registry.addInterceptor(menuPermissionCheckInterceptor())
+                .excludePathPatterns(resourcesList)
+                .addPathPatterns("/**")
+        ;
     }
 }

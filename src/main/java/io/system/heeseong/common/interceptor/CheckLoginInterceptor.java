@@ -34,9 +34,8 @@ public class CheckLoginInterceptor implements AsyncHandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-//		AccountUser accountUser = accountService.getSessionAccountUser();
-//		modelAndView.addObject("accountUser",accountUser);
-//		super.postHandle(request, response, handler, modelAndView);
+		modelAndView.addObject("accountUser", accountUserService.getSessionAccountUser());
+		AsyncHandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
 	}
 
 	

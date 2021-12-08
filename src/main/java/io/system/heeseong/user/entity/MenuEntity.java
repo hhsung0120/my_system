@@ -22,6 +22,12 @@ public class MenuEntity extends TimeEntity {
     private String menuUri;
 
     @Column(nullable = false)
+    private int order;
+
+    @Column(nullable = false)
+    private String listYn;
+
+    @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
@@ -36,6 +42,8 @@ public class MenuEntity extends TimeEntity {
                 "idx=" + idx +
                 ", menuName='" + menuName + '\'' +
                 ", menuUri='" + menuUri + '\'' +
+                ", order=" + order +
+                ", listYn='" + listYn + '\'' +
                 ", description='" + description + '\'' +
                 ", useYn='" + useYn + '\'' +
                 '}';
