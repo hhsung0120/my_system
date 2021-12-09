@@ -2,6 +2,9 @@ package io.system.heeseong.common.exception;
 
 public class LoginFailException extends RuntimeException{
 
+    public LoginFailException(){
+    }
+
     private String message;
     public LoginFailException(String message){
         this.message = message;

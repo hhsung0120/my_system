@@ -1,6 +1,6 @@
 package io.system.heeseong.common.code;
 
-public enum UserStatus {
+public enum UserStatusEnum {
     NORMAL("정상")
     , LOCK("잠금")
     , SECESSION("탈퇴")
@@ -8,7 +8,7 @@ public enum UserStatus {
 
 
     String value = "";
-    UserStatus(String value){
+    UserStatusEnum(String value){
         this.value = value;
     }
 

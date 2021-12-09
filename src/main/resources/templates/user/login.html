@@ -45,10 +45,10 @@
             , dataType : 'text'
             , data : $('#dataForm').serialize()
             , success : function(data){
-                if(data > 0){
+                if(data.code == '0000'){
                     location.href = '/portfolio/main';
                 }else{
-                    alert('로그인 실패')
+                    alert(data.message)
                 }
             } ,error:function(x,error){
                 console.log(x);

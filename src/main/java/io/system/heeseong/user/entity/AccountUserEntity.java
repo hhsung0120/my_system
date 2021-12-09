@@ -1,6 +1,6 @@
 package io.system.heeseong.user.entity;
 
-import io.system.heeseong.common.code.UserStatus;
+import io.system.heeseong.common.code.UserStatusEnum;
 import io.system.heeseong.user.model.AccountUser;
 import lombok.Getter;
 
@@ -26,7 +26,7 @@ public class AccountUserEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private UserStatus status;
+    private UserStatusEnum status;
 
     @Column(nullable = false)
     private String role;
