@@ -1,5 +1,6 @@
 package io.system.heeseong.user.controller;
 
+import io.system.heeseong.common.code.LoginEnum;
 import io.system.heeseong.common.domain.model.ResponseData;
 import io.system.heeseong.user.domain.model.AccountUser;
 import io.system.heeseong.user.service.AccountUserService;
@@ -28,8 +29,8 @@ public class AccountUserController {
     public ResponseData login(@ModelAttribute AccountUser accountUser){
         accountUserService.getAccountUser(accountUser);
 
-        //return new ResponseData(LoginEnum.);
-        return null;
+        return new ResponseData(LoginEnum.class);
+        //return null;
     }
 
     @ResponseBody
