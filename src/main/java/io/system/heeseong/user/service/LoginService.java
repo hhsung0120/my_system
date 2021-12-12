@@ -1,9 +1,9 @@
 package io.system.heeseong.user.service;
 
 import io.system.heeseong.common.exception.LoginFailException;
-import io.system.heeseong.user.entity.AccountUserEntity;
-import io.system.heeseong.user.model.AccountUser;
-import io.system.heeseong.user.reposiroty.AccountUserRepository;
+import io.system.heeseong.user.domain.entity.AccountUserEntity;
+import io.system.heeseong.user.domain.model.AccountUser;
+import io.system.heeseong.user.domain.reposiroty.AccountUserRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

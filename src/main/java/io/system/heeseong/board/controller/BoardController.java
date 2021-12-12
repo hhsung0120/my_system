@@ -1,13 +1,11 @@
 package io.system.heeseong.board.controller;
 
 import io.system.heeseong.board.model.Board;
-import io.system.heeseong.board.model.ResponseData;
 import io.system.heeseong.board.service.BoardDetailService;
 import io.system.heeseong.board.service.BoardMainService;
 import io.system.heeseong.common.domain.model.Files;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;

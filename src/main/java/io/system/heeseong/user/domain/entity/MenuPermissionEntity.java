@@ -1,7 +1,7 @@
-package io.system.heeseong.user.entity;
+package io.system.heeseong.user.domain.entity;
 
 import io.system.heeseong.common.domain.entity.TimeEntity;
-import io.system.heeseong.user.model.Menu;
+import io.system.heeseong.user.domain.model.Menu;
 import lombok.Getter;
 
 import javax.persistence.*;

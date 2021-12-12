@@ -1,6 +1,6 @@
 package io.system.heeseong.common.controller;
 
-import io.system.heeseong.user.model.Menu;
+import io.system.heeseong.user.domain.model.Menu;
 import io.system.heeseong.user.service.AccountUserService;
 import io.system.heeseong.user.service.MenuService;
 import lombok.RequiredArgsConstructor;

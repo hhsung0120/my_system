@@ -1,6 +1,6 @@
 package io.system.heeseong.common.interceptor;
 
-import io.system.heeseong.user.model.AccountUser;
+import io.system.heeseong.user.domain.model.AccountUser;
 import io.system.heeseong.user.service.AccountUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

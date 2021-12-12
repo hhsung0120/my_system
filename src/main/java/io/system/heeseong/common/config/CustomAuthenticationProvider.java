@@ -1,11 +1,8 @@
 package io.system.heeseong.common.config;
 
-import io.system.heeseong.user.model.AccountUser;
-import io.system.heeseong.user.service.LoginService;
+import io.system.heeseong.user.domain.model.AccountUser;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;

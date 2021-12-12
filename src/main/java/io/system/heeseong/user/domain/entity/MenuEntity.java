@@ -1,8 +1,7 @@
-package io.system.heeseong.user.entity;
+package io.system.heeseong.user.domain.entity;
 
 import io.system.heeseong.common.domain.entity.TimeEntity;
 import lombok.Getter;
-import lombok.ToString;
 
 import javax.persistence.*;
 

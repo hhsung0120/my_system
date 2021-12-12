@@ -1,6 +1,6 @@
-package io.system.heeseong.user.reposiroty;
+package io.system.heeseong.user.domain.reposiroty;
 
-import io.system.heeseong.user.entity.AccountUserEntity;
+import io.system.heeseong.user.domain.entity.AccountUserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

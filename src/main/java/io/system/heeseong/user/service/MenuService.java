@@ -1,8 +1,8 @@
 package io.system.heeseong.user.service;
 
-import io.system.heeseong.user.entity.MenuPermissionEntity;
-import io.system.heeseong.user.model.Menu;
-import io.system.heeseong.user.reposiroty.MenuPermissionRepository;
+import io.system.heeseong.user.domain.entity.MenuPermissionEntity;
+import io.system.heeseong.user.domain.model.Menu;
+import io.system.heeseong.user.domain.reposiroty.MenuPermissionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

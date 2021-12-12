@@ -1,7 +1,7 @@
-package io.system.heeseong.user.entity;
+package io.system.heeseong.user.domain.entity;
 
 import io.system.heeseong.common.code.UserStatusEnum;
-import io.system.heeseong.user.model.AccountUser;
+import io.system.heeseong.user.domain.model.AccountUser;
 import lombok.Getter;
 
 import javax.persistence.*;

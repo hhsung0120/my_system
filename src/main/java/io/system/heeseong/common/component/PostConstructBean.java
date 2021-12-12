@@ -1,6 +1,6 @@
 package io.system.heeseong.common.component;
 
-import io.system.heeseong.user.service.MenuService;
+import io.system.heeseong.common.service.CodeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -12,10 +12,12 @@ import javax.annotation.PostConstruct;
 @RequiredArgsConstructor
 public class PostConstructBean {
 
-    final MenuService menuService;
+    final CodeService codeService;
 
     @PostConstruct
     public void init(){
-        //원래 이 타이밍에 모든 메뉴를 미리 셋팅 해 두려 했으나 다시 설계        
+        codeService.setCodeList();
+        codeService.getCodeList();
+
     }
 }
