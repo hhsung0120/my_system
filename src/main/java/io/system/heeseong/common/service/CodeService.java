@@ -1,28 +1,41 @@
 package io.system.heeseong.common.service;
 
-import io.system.heeseong.common.code.LoginEnum;
+import io.system.heeseong.common.domain.entity.CodeEntity;
+import io.system.heeseong.common.domain.model.Code;
 import io.system.heeseong.common.domain.repository.CodeRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class CodeService {
 
+    private Map<String, Code> codeList = new HashMap<>();
+
     final CodeRepository codeRepository;
 
-    private Map<String, Object> codeList = new HashMap<>();
+    public void setCodeList(){
+        List<CodeEntity> codeEntity = Optional.ofNullable(codeRepository.findAll())
+                                                .orElse(new ArrayList<>());
 
-    public Map<String, Object> setCodeList(){
-        //codeList = codeRepository.findAll().stream()
-        codeList.put("login", LoginEnum.class);
-        return null;
+        codeList = codeEntity.stream()
+                    .filter(list -> "y".equalsIgnoreCase(list.getUse_yn()))
+                    .map(list -> list.entityToValueObject())
+                    .collect(Collectors.toMap(Code::getKey, Function.identity()));
     }
 
     public void getCodeList(){
-        System.out.println();
+        log.info("codeList {}", codeList);
+    }
+
+    public Code getCode(String key){
+        return Optional.ofNullable(codeList.get(key))
+                        .orElse(new Code());
     }
 }

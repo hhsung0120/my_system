@@ -42,10 +42,10 @@
         $.ajax({
             url : "/users/login"
             , method : "POST"
-            , dataType : 'text'
+            , dataType : 'json'
             , data : $('#dataForm').serialize()
             , success : function(data){
-                if(data.code == '0000'){
+                if(data.code == 'success'){
                     location.href = '/portfolio/main';
                 }else{
                     alert(data.message)

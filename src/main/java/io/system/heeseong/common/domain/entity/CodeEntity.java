@@ -1,5 +1,7 @@
 package io.system.heeseong.common.domain.entity;
 
+import io.system.heeseong.common.domain.model.Code;
+import io.system.heeseong.user.domain.model.Menu;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -26,6 +28,15 @@ public class CodeEntity extends TimeEntity {
     private String use_yn;
 
     public CodeEntity() {
+    }
+
+    public Code entityToValueObject(){
+        return Code.entityToValueObject()
+                    .codeGroup(codeGroup)
+                    .code(code)
+                    .message(message)
+                    .useYn(use_yn)
+                    .build();
     }
 
     @Override

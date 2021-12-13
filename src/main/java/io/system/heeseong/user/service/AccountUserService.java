@@ -34,7 +34,7 @@ public class AccountUserService {
     public AccountUser getAccountUser(AccountUser accountUser){
         AccountUserEntity accountUserEntity =
                 Optional.ofNullable(accountUserRepository.findByEmail(accountUser.getEmail()))
-                        .orElseThrow(() -> new LoginFailException(LoginFailException.Message.LOGIN_FAIL_EXCEPTION));
+                        .orElseThrow(() -> new LoginFailException());
 
         //비밀번호 검사
         if(!new BCryptPasswordEncoder().matches(accountUser.getPassword(), accountUserEntity.getPassword())){
@@ -42,7 +42,6 @@ public class AccountUserService {
         }
 
         dataSetting(accountUserEntity.entityToValueObject());
-
 
         return accountUserEntity.entityToValueObject();
     }
@@ -62,7 +61,6 @@ public class AccountUserService {
         menuList = menuService.selectMyMenuPermissionList(accountUser.getRole());
     }
 
-
     public void setSessionAccountUser(AccountUser accountUser){
         httpSession.setAttribute("accountUser", accountUser);
     }
@@ -70,5 +68,10 @@ public class AccountUserService {
     public AccountUser getSessionAccountUser(){
         return (AccountUser) Optional.ofNullable(httpSession.getAttribute("accountUser"))
                                      .orElse(null);
+    }
+
+    public void logout(){
+        httpSession.removeAttribute("accountUser");
+        httpSession.setAttribute("accountUser", null);
     }
 }
