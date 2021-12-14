@@ -25,7 +25,7 @@ public class WebConfig implements WebMvcConfigurer{
     List<String> resourcesList = Arrays.asList(
             "/css/**", "/fonts/**", "/js/**", "/smartEditor/**"
             , "/favicon.ico", "/test/**", "/users/login", "/error/**"
-            , "/config/**");
+            , "/config/**", "/users/logout");
 
     // 업로드 폴더 지정
     @Override
