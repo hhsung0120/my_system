@@ -38,6 +38,7 @@ public class MenuPermissionCheckInterceptor implements AsyncHandlerInterceptor {
 				return true;
 			}
 		}
+
 		response.sendError(HttpServletResponse.SC_FORBIDDEN);
 		return false;
 	}
