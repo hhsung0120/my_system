@@ -45,6 +45,7 @@ public class MenuPermissionCheckInterceptor implements AsyncHandlerInterceptor {
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+		System.out.println(accountUserService.getMenuPermissionList());
 		modelAndView.addObject("menuList", accountUserService.getMenuPermissionList());
 	}
 }
