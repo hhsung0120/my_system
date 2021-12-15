@@ -45,7 +45,7 @@ public class BoardMainService {
         board.setCreateUser(accountUserService.getSessionAccountUser().getEmail());
 
         Long boardIdx = Optional.ofNullable(boardRepository.save(board.toEntity()).getIdx())
-                           .orElseThrow(BoardTypeException::new);
+                           .orElseThrow(BoardException::new);
 
         for(MultipartFile files : board.getFiles()){
             if(!files.isEmpty()){
