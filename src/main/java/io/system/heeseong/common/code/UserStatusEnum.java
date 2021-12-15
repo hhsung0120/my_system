@@ -1,6 +1,6 @@
 package io.system.heeseong.common.code;
 
-public enum UserStatusEnum {
+public enum UserStatusEnum implements EnumModel{
     NORMAL("정상")
     , LOCK("잠금")
     , SECESSION("탈퇴")
@@ -12,6 +12,7 @@ public enum UserStatusEnum {
         this.value = value;
     }
 
+    @Override
     public String getValue(){
         return value;
     }

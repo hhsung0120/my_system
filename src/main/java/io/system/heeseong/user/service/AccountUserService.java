@@ -1,6 +1,6 @@
 package io.system.heeseong.user.service;
 
-import io.system.heeseong.common.exception.LoginFailException;
+import io.system.heeseong.common.exception.login.LoginException;
 import io.system.heeseong.user.domain.entity.AccountUserEntity;
 import io.system.heeseong.user.domain.model.AccountUser;
 import io.system.heeseong.user.domain.model.Menu;
@@ -34,11 +34,11 @@ public class AccountUserService {
     public AccountUser getAccountUser(AccountUser accountUser){
         AccountUserEntity accountUserEntity =
                 Optional.ofNullable(accountUserRepository.findByEmail(accountUser.getEmail()))
-                        .orElseThrow(() -> new LoginFailException());
+                        .orElseThrow(LoginException::new);
 
         //비밀번호 검사
         if(!new BCryptPasswordEncoder().matches(accountUser.getPassword(), accountUserEntity.getPassword())){
-            throw new LoginFailException(LoginFailException.Message.LOGIN_FAIL_EXCEPTION);
+            throw new LoginException();
         }
 
         dataSetting(accountUserEntity.entityToValueObject());

@@ -45,7 +45,11 @@ public class MenuPermissionCheckInterceptor implements AsyncHandlerInterceptor {
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-		System.out.println(accountUserService.getMenuPermissionList());
+		//비동기 요청일경우 여기에 걸리면 view 가 없어서 null 임
+		if(modelAndView == null){
+			modelAndView = new ModelAndView();
+		}
 		modelAndView.addObject("menuList", accountUserService.getMenuPermissionList());
+
 	}
 }

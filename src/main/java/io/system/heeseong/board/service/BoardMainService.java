@@ -2,8 +2,10 @@ package io.system.heeseong.board.service;
 
 import io.system.heeseong.board.model.Board;
 import io.system.heeseong.board.repository.BoardRepository;
+import io.system.heeseong.common.code.TableEnum;
 import io.system.heeseong.common.domain.model.Files;
 import io.system.heeseong.common.domain.repository.FileRepository;
+import io.system.heeseong.common.exception.board.BoardException;
 import io.system.heeseong.common.util.FileUtil;
 import io.system.heeseong.user.service.AccountUserService;
 import lombok.RequiredArgsConstructor;
@@ -39,18 +41,16 @@ public class BoardMainService {
     }
 
     private void insertBoard(Board board){
-        String tableName = "board";
-        //무조건 있음 인터셉터에서 검사 하기때문에
         board.setCreateUser(accountUserService.getSessionAccountUser().getEmail());
 
         Long boardIdx = Optional.ofNullable(boardRepository.save(board.toEntity()).getIdx())
-                           .orElseThrow(() -> new RuntimeException("오류"));
+                           .orElseThrow(BoardException::new);
 
         for(MultipartFile files : board.getFiles()){
             if(!files.isEmpty()){
                 Files file = fileUpload(files);
                 file.setCreateUser(board.getCreateUser());
-                fileRepository.save(file.toEntity(boardIdx, tableName));
+                fileRepository.save(file.toEntity(boardIdx, TableEnum.BOARD.getValue()));
             }
         }
     }

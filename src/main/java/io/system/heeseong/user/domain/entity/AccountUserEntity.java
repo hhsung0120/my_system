@@ -1,5 +1,6 @@
 package io.system.heeseong.user.domain.entity;
 
+import io.system.heeseong.common.code.TableEnum;
 import io.system.heeseong.common.code.UserStatusEnum;
 import io.system.heeseong.user.domain.model.AccountUser;
 import lombok.Getter;

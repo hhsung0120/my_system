@@ -33,19 +33,10 @@ public class CheckLoginInterceptor implements AsyncHandlerInterceptor {
 
 		if(accountUser == null){
 			String contextPath = request.getContextPath();
-			response.sendRedirect(contextPath+"/users/login");
+			response.sendRedirect(contextPath+"/");
 			return false;
 		}
 
 		return true;
 	}
-
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		modelAndView.addObject("accountUser", accountUserService.getSessionAccountUser());
-		AsyncHandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
-	}
-
-	
 }

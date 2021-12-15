@@ -1,6 +1,6 @@
 package io.system.heeseong.user.service;
 
-import io.system.heeseong.common.exception.LoginFailException;
+import io.system.heeseong.common.exception.login.LoginException;
 import io.system.heeseong.user.domain.entity.AccountUserEntity;
 import io.system.heeseong.user.domain.model.AccountUser;
 import io.system.heeseong.user.domain.reposiroty.AccountUserRepository;
@@ -27,10 +27,10 @@ public class LoginService implements UserDetailsService {
     public AccountUser getAccountUser(String email, String password){
         AccountUserEntity accountUserEntity =
                 Optional.ofNullable(accountUserRepository.findByEmail(email))
-                        .orElseThrow(() -> new LoginFailException(LoginFailException.Message.LOGIN_FAIL_EXCEPTION));
+                        .orElseThrow(() -> new LoginException(LoginException.Message.LOGIN_FAIL_EXCEPTION));
 
         if(!new BCryptPasswordEncoder().matches(password, accountUserEntity.getPassword())){
-            throw new LoginFailException(LoginFailException.Message.LOGIN_FAIL_EXCEPTION);
+            throw new LoginException(LoginException.Message.LOGIN_FAIL_EXCEPTION);
         }
 
 //        if ("user".equals(email)) {

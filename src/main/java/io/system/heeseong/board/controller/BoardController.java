@@ -4,6 +4,8 @@ import io.system.heeseong.board.model.Board;
 import io.system.heeseong.board.service.BoardDetailService;
 import io.system.heeseong.board.service.BoardMainService;
 import io.system.heeseong.common.domain.model.Files;
+import io.system.heeseong.common.domain.model.ResponseData;
+import io.system.heeseong.common.service.CodeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -24,10 +26,10 @@ public class BoardController {
 
     final BoardMainService boardMainService;
     final BoardDetailService boardDetailService;
-
+    final CodeService codeService;
 
     @GetMapping
-    public ModelAndView list(@RequestParam(required = false, defaultValue = "board", value = "boardType") String boardType){
+    public ModelAndView list(@RequestParam(required = false, defaultValue = "facebook") String boardType){
         //TODO 서비스에서 겟 할때 보드타입 검사하기
         return new ModelAndView("/board/list")
                     .addObject("boardType", boardType)
@@ -45,9 +47,9 @@ public class BoardController {
 
     @ResponseBody
     @PostMapping("/form")
-    public String save(@ModelAttribute Board board){
+    public ResponseData save(@ModelAttribute Board board){
         boardMainService.saveBoard(board);
-        return "test";
+        return new ResponseData(codeService.getCode("board_success"));
     }
 
     @GetMapping("/{boardId}")

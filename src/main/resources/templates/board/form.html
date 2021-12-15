@@ -96,22 +96,31 @@
             return false;
         }
 
+        $('#saveButton').hide();
         if(confirm("저장 하시겠습니까?")) {
             $.ajax({
                 url : "/boards/form"
                 , method : "POST"
-                , dataType : 'text'
+                , dataType : 'json'
                 , processData: false
                 , contentType: false
                 , data : new FormData($('#dataForm')[0])
                 , success : function(data){
                     $('#saveButton').hide();
+                    if(data.code == 'success'){
+                        alert(data.message);
+                        location.href = "/boards"
+                    }else{
+                        alert(data.message);
+                    }
                 } ,error:function(x,error){
                     console.log(x);
                     console.log(error);
                     alert("처리중 오류가 발생했습니다.");
                 }
             });
+        }else{
+            $('#saveButton').show();
         }
     }
 

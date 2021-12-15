@@ -1,12 +1,12 @@
-package io.system.heeseong.common.exception;
+package io.system.heeseong.common.exception.login;
 
-public class LoginFailException extends RuntimeException{
+public class LoginException extends RuntimeException{
 
-    public LoginFailException(){
+    public LoginException(){
     }
 
     private String message;
-    public LoginFailException(String message){
+    public LoginException(String message){
         this.message = message;
     }
 
