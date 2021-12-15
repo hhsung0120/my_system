@@ -6,6 +6,7 @@ import io.system.heeseong.common.code.TableEnum;
 import io.system.heeseong.common.domain.model.Files;
 import io.system.heeseong.common.domain.repository.FileRepository;
 import io.system.heeseong.common.exception.board.BoardException;
+import io.system.heeseong.common.exception.board.BoardTypeException;
 import io.system.heeseong.common.util.FileUtil;
 import io.system.heeseong.user.service.AccountUserService;
 import lombok.RequiredArgsConstructor;
@@ -44,7 +45,7 @@ public class BoardMainService {
         board.setCreateUser(accountUserService.getSessionAccountUser().getEmail());
 
         Long boardIdx = Optional.ofNullable(boardRepository.save(board.toEntity()).getIdx())
-                           .orElseThrow(BoardException::new);
+                           .orElseThrow(BoardTypeException::new);
 
         for(MultipartFile files : board.getFiles()){
             if(!files.isEmpty()){
