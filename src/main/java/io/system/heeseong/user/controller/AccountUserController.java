@@ -23,6 +23,10 @@ public class AccountUserController {
 
     @GetMapping("/login")
     public String login(){
+        if(accountUserService.isLogin()){
+            return "redirect:/portfolio/main";
+        }
+
         return "/user/login";
     }
 

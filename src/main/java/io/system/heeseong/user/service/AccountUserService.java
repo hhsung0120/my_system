@@ -32,6 +32,8 @@ public class AccountUserService {
     }
 
     public AccountUser getAccountUser(AccountUser accountUser){
+        log.info("getAccountUser {}", accountUser.toString());
+
         AccountUserEntity accountUserEntity =
                 Optional.ofNullable(accountUserRepository.findByEmail(accountUser.getEmail()))
                         .orElseThrow(LoginException::new);
@@ -68,6 +70,10 @@ public class AccountUserService {
     public AccountUser getSessionAccountUser(){
         return (AccountUser) Optional.ofNullable(httpSession.getAttribute("accountUser"))
                                      .orElse(null);
+    }
+
+    public boolean isLogin(){
+        return this.getSessionAccountUser() != null;
     }
 
     public void logout(){

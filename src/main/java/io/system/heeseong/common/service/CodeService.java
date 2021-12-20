@@ -30,8 +30,9 @@ public class CodeService {
                     .collect(Collectors.toMap(Code::getKey, Function.identity()));
     }
 
-    public void getCodeList(){
+    public Map<String, Code> getCodeList(){
         log.info("codeList {}", codeList);
+        return codeList;
     }
 
     public Code getCode(String key){
