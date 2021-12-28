@@ -1,12 +1,11 @@
 package io.system.heeseong.board.service;
 
-import io.system.heeseong.board.model.Board;
-import io.system.heeseong.board.repository.BoardRepository;
-import io.system.heeseong.common.code.TableEnum;
+import io.system.heeseong.board.domain.model.Board;
+import io.system.heeseong.board.domain.repository.BoardRepository;
+import io.system.heeseong.common.enumtype.TableEnum;
 import io.system.heeseong.common.domain.model.Files;
 import io.system.heeseong.common.domain.repository.FileRepository;
 import io.system.heeseong.common.exception.board.BoardException;
-import io.system.heeseong.common.exception.board.BoardTypeException;
 import io.system.heeseong.common.util.FileUtil;
 import io.system.heeseong.user.service.AccountUserService;
 import lombok.RequiredArgsConstructor;

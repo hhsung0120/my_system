@@ -1,6 +1,6 @@
-package io.system.heeseong.board.repository;
+package io.system.heeseong.board.domain.repository;
 
-import io.system.heeseong.board.entity.ChildCategoryEntity;
+import io.system.heeseong.board.domain.entity.ChildCategoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

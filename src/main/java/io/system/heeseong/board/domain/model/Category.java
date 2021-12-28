@@ -1,4 +1,4 @@
-package io.system.heeseong.board.model;
+package io.system.heeseong.board.domain.model;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,6 +1,7 @@
-package io.system.heeseong.board.model;
+package io.system.heeseong.board.domain.model;
 
-import io.system.heeseong.board.entity.BoardEntity;
+import io.system.heeseong.board.domain.entity.BoardEntity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,6 +25,11 @@ public class Board {
     private String createUser;
 
     public Board() {
+    }
+
+    @Builder
+    public Board(String boardType) {
+        this.boardType = boardType;
     }
 
     public Board(Long idx, String boardType) {

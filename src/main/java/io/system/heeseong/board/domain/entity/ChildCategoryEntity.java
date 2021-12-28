@@ -1,6 +1,6 @@
-package io.system.heeseong.board.entity;
+package io.system.heeseong.board.domain.entity;
 
-import io.system.heeseong.board.model.Category;
+import io.system.heeseong.board.domain.model.Category;
 import io.system.heeseong.common.domain.entity.TimeEntity;
 import lombok.Getter;
 

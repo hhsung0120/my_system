@@ -1,13 +1,16 @@
 package io.system.heeseong.board.service;
 
-import io.system.heeseong.board.entity.ChildCategoryEntity;
-import io.system.heeseong.board.entity.ParentCategoryEntity;
-import io.system.heeseong.board.model.Board;
-import io.system.heeseong.board.model.Category;
-import io.system.heeseong.board.repository.BoardRepository;
-import io.system.heeseong.board.repository.ChildCategoryRepository;
-import io.system.heeseong.board.repository.ParentCategoryRepository;
+import io.system.heeseong.board.domain.entity.BoardTypeEntity;
+import io.system.heeseong.board.domain.entity.ChildCategoryEntity;
+import io.system.heeseong.board.domain.entity.ParentCategoryEntity;
+import io.system.heeseong.board.domain.model.Board;
+import io.system.heeseong.board.domain.model.Category;
+import io.system.heeseong.board.domain.repository.BoardRepository;
+import io.system.heeseong.board.domain.repository.BoardTypeRepository;
+import io.system.heeseong.board.domain.repository.ChildCategoryRepository;
+import io.system.heeseong.board.domain.repository.ParentCategoryRepository;
 import io.system.heeseong.common.domain.repository.FileRepository;
+import io.system.heeseong.common.exception.board.BoardTypeException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,11 +28,26 @@ import static java.util.stream.Collectors.toList;
 @RequiredArgsConstructor
 public class BoardDetailService {
 
+    List<String> boardTypeList = new ArrayList<>();
+
     final BoardRepository boardRepository;
+    final BoardTypeRepository boardTypeRepository;
     final FileRepository fileRepository;
     final ParentCategoryRepository parentCategoryRepository;
     final ChildCategoryRepository childCategoryRepository;
 
+
+    public List<Board> getBoardList(String boardType){
+        checkBoardType(boardType);
+
+        return new ArrayList<>();
+    }
+
+    private void checkBoardType(String boardType) {
+        if(!boardTypeList.contains(boardType)){
+            throw new BoardTypeException();
+        }
+    }
 
     public Board getBoard(String boardId){
 //        Optional<BoardEntity> boardEntity = boardRepository.findById(1L);
@@ -63,4 +81,16 @@ public class BoardDetailService {
     }
 
 
+    public void getBoardTypeList() {
+        List<BoardTypeEntity> boardTypeEntityList =
+                Optional.ofNullable(boardTypeRepository.findAll())
+                        .orElse(new ArrayList<>());
+
+        for(BoardTypeEntity boardTypeEntity : boardTypeEntityList){
+            if(!boardTypeEntity.isUseYn()){
+                continue;
+            }
+            boardTypeList.add(boardTypeEntity.getBoardType());
+        }
+    }
 }

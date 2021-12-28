@@ -1,6 +1,6 @@
 package io.system.heeseong.board.controller;
 
-import io.system.heeseong.board.model.Board;
+import io.system.heeseong.board.domain.model.Board;
 import io.system.heeseong.board.service.BoardDetailService;
 import io.system.heeseong.board.service.BoardMainService;
 import io.system.heeseong.common.domain.model.Files;
@@ -31,6 +31,7 @@ public class BoardController {
     @GetMapping
     public ModelAndView list(@RequestParam(required = false, defaultValue = "facebook") String boardType){
         //TODO 서비스에서 겟 할때 보드타입 검사하기
+        boardDetailService.getBoardList(boardType);
         return new ModelAndView("/board/list")
                     .addObject("boardType", boardType)
                     ;

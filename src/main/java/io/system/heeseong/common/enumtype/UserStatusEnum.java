@@ -1,4 +1,4 @@
-package io.system.heeseong.common.code;
+package io.system.heeseong.common.enumtype;
 
 public enum UserStatusEnum implements EnumModel{
     NORMAL("정상")
