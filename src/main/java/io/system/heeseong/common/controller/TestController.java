@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -39,6 +40,20 @@ public class TestController {
         }else{
             System.out.println("sdfsdf");
         }
+
+        return "timeTest";
+    }
+
+    @ResponseBody
+    @GetMapping("/timeTest2")
+    public String time2(){
+        LocalDateTime test = LocalDateTime.now();
+        LocalDateTime test2 = test.plusMinutes(20);
+
+        boolean tt = test.isAfter(test2);
+
+        System.out.println(tt);
+
 
         return "timeTest";
     }

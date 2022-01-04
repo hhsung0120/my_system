@@ -28,7 +28,6 @@ logging:
     org.hibernate.SQL: debug
     org.hibernate.type.descriptor.sql: trace
 
-
   file:
     name: D:${file.separator}logs${file.separator}system${file.separator}system.log
   logback:
