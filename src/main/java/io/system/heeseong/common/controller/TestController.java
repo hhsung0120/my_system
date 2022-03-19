@@ -24,7 +24,7 @@ public class TestController {
 
     @ResponseBody
     @GetMapping("/timeTest")
-    public String time(){
+    public String time() {
         Long currentTime = System.currentTimeMillis();
         Long hour = 60 * 60 * 1000L;
 
@@ -37,7 +37,7 @@ public class TestController {
 //            adminAuthMap.computeIfAbsent(level, (adminAuthList) -> getAdminMenuList(level));
             authExpireTime = currentTime;
             System.out.println("sdfsdfsdfsdfsdf");
-        }else{
+        } else {
             System.out.println("sdfsdf");
         }
 
@@ -46,7 +46,7 @@ public class TestController {
 
     @ResponseBody
     @GetMapping("/timeTest2")
-    public String time2(){
+    public String time2() {
         LocalDateTime test = LocalDateTime.now();
         LocalDateTime test2 = test.plusMinutes(20);
 
@@ -60,19 +60,19 @@ public class TestController {
 
     @ResponseBody
     @GetMapping("/menuList")
-    public List<Menu> menuList(){
+    public List<Menu> menuList() {
         return accountUserService.getMenuPermissionList();
     }
 
     @ResponseBody
     @GetMapping("/set-menuList")
-    public List<Menu> setMenuList(){
+    public List<Menu> setMenuList() {
         return accountUserService.getMenuPermissionList();
     }
 
     @ResponseBody
     @GetMapping("/reload-menuList")
-    public String reloadMenuList(){
+    public String reloadMenuList() {
         accountUserService.reloadMenuPermissionList();
         return "호출 완료";
     }

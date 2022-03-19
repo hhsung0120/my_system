@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class AccountUser{
+public class AccountUser {
     private Long idx;
     private String email;
     private String password;

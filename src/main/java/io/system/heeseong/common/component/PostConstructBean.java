@@ -19,7 +19,7 @@ public class PostConstructBean {
     final BoardDetailService boardDetailService;
 
     @PostConstruct
-    public void init(){
+    public void init() {
 
         //공통 코드 목록 셋팅
         codeService.setCodeList();

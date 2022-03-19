@@ -27,11 +27,11 @@ public class AccountUserService {
     final MenuService menuService;
     final HttpSession httpSession;
 
-    public Long getAccountUserIdx(AccountUser accountUser){
+    public Long getAccountUserIdx(AccountUser accountUser) {
         return getAccountUser(accountUser).getIdx();
     }
 
-    public AccountUser getAccountUser(AccountUser accountUser){
+    public AccountUser getAccountUser(AccountUser accountUser) {
         log.info("getAccountUser {}", accountUser.toString());
 
         AccountUserEntity accountUserEntity =
@@ -39,7 +39,7 @@ public class AccountUserService {
                         .orElseThrow(LoginException::new);
 
         //비밀번호 검사
-        if(!new BCryptPasswordEncoder().matches(accountUser.getPassword(), accountUserEntity.getPassword())){
+        if (!new BCryptPasswordEncoder().matches(accountUser.getPassword(), accountUserEntity.getPassword())) {
             throw new LoginException();
         }
 
@@ -54,29 +54,29 @@ public class AccountUserService {
         menuList = menuService.selectMyMenuPermissionList(accountUser.getRole());
     }
 
-    public List<Menu> getMenuPermissionList(){
+    public List<Menu> getMenuPermissionList() {
         return menuList;
     }
 
-    public void reloadMenuPermissionList(){
+    public void reloadMenuPermissionList() {
         AccountUser accountUser = this.getSessionAccountUser();
         menuList = menuService.selectMyMenuPermissionList(accountUser.getRole());
     }
 
-    public void setSessionAccountUser(AccountUser accountUser){
+    public void setSessionAccountUser(AccountUser accountUser) {
         httpSession.setAttribute("accountUser", accountUser);
     }
 
-    public AccountUser getSessionAccountUser(){
+    public AccountUser getSessionAccountUser() {
         return (AccountUser) Optional.ofNullable(httpSession.getAttribute("accountUser"))
-                                     .orElse(null);
+                .orElse(null);
     }
 
-    public boolean isLogin(){
+    public boolean isLogin() {
         return this.getSessionAccountUser() != null;
     }
 
-    public void logout(){
+    public void logout() {
         httpSession.removeAttribute("accountUser");
         httpSession.setAttribute("accountUser", null);
     }

@@ -37,7 +37,7 @@ public class Board {
         this.boardType = boardType;
     }
 
-    public BoardEntity toEntity(){
+    public BoardEntity toEntity() {
         return BoardEntity.insertBoard()
                 .tableName(boardType)
                 .boardType(boardType)

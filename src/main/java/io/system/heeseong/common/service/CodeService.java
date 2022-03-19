@@ -20,23 +20,23 @@ public class CodeService {
 
     final CodeRepository codeRepository;
 
-    public void setCodeList(){
+    public void setCodeList() {
         List<CodeEntity> codeEntity = Optional.ofNullable(codeRepository.findAll())
-                                                .orElse(new ArrayList<>());
+                .orElse(new ArrayList<>());
 
         codeList = codeEntity.stream()
-                    .filter(list -> "y".equalsIgnoreCase(list.getUse_yn()))
-                    .map(list -> list.entityToValueObject())
-                    .collect(Collectors.toMap(Code::getKey, Function.identity()));
+                .filter(list -> "y".equalsIgnoreCase(list.getUse_yn()))
+                .map(list -> list.entityToValueObject())
+                .collect(Collectors.toMap(Code::getKey, Function.identity()));
     }
 
-    public Map<String, Code> getCodeList(){
+    public Map<String, Code> getCodeList() {
         log.info("codeList {}", codeList);
         return codeList;
     }
 
-    public Code getCode(String key){
+    public Code getCode(String key) {
         return Optional.ofNullable(codeList.get(key))
-                        .orElse(new Code());
+                .orElse(new Code());
     }
 }

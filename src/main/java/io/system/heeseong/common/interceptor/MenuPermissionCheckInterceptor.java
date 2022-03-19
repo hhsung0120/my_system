@@ -15,41 +15,41 @@ import java.util.List;
 @Slf4j
 public class MenuPermissionCheckInterceptor implements AsyncHandlerInterceptor {
 
-	@Autowired
-	private AccountUserService accountUserService;
+    @Autowired
+    private AccountUserService accountUserService;
 
-	@Autowired
-	private ValidationService validationService;
+    @Autowired
+    private ValidationService validationService;
 
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws Exception {
 
-		if(!validationService.isMenuPermissionCheck()){
-			return true;
-		}
+        if (!validationService.isMenuPermissionCheck()) {
+            return true;
+        }
 
-		String requestUri = request.getRequestURI();
+        String requestUri = request.getRequestURI();
 
-		//스트림으로 변경하기
-		List<Menu> menuList = accountUserService.getMenuPermissionList();
-		for(Menu myMenu : menuList){
-			if(requestUri.contains(myMenu.getMenuUri())){
-				return true;
-			}
-		}
+        //스트림으로 변경하기
+        List<Menu> menuList = accountUserService.getMenuPermissionList();
+        for (Menu myMenu : menuList) {
+            if (requestUri.contains(myMenu.getMenuUri())) {
+                return true;
+            }
+        }
 
-		response.sendError(HttpServletResponse.SC_FORBIDDEN);
-		return false;
-	}
+        response.sendError(HttpServletResponse.SC_FORBIDDEN);
+        return false;
+    }
 
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-		//비동기 요청일경우 여기에 걸리면 view 가 없어서 null 임
-		if(modelAndView == null){
-			modelAndView = new ModelAndView();
-		}
-		modelAndView.addObject("menuList", accountUserService.getMenuPermissionList());
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        //비동기 요청일경우 여기에 걸리면 view 가 없어서 null 임
+        if (modelAndView == null) {
+            modelAndView = new ModelAndView();
+        }
+        modelAndView.addObject("menuList", accountUserService.getMenuPermissionList());
 
-	}
+    }
 }

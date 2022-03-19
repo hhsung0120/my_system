@@ -19,12 +19,12 @@ public class MenuService {
 
     final MenuPermissionRepository menuPermissionRepository;
 
-    public List<Menu> selectMyMenuPermissionList(String role){
+    public List<Menu> selectMyMenuPermissionList(String role) {
         return menuPermissionRepository.findByRole(role)
                 .stream()
-                    .filter(MenuPermissionEntity::isUseYn)
-                    .map(list -> list.entityToValueObject())
-                    .sorted(Comparator.comparing(Menu::getOrder))
-                    .collect(toList());
+                .filter(MenuPermissionEntity::isUseYn)
+                .map(list -> list.entityToValueObject())
+                .sorted(Comparator.comparing(Menu::getOrder))
+                .collect(toList());
     }
 }

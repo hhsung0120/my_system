@@ -10,7 +10,8 @@ import javax.persistence.*;
 @Table(name = "menu")
 public class MenuEntity extends TimeEntity {
 
-    @Id @Column(name = "menu_idx")
+    @Id
+    @Column(name = "menu_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 

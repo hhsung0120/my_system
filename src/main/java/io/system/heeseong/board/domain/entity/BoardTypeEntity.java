@@ -12,7 +12,8 @@ import javax.persistence.*;
 @Table(name = "board_type")
 public class BoardTypeEntity extends TimeEntity {
 
-    @Id @Column(name = "board_type_idx")
+    @Id
+    @Column(name = "board_type_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
@@ -28,7 +29,7 @@ public class BoardTypeEntity extends TimeEntity {
     public BoardTypeEntity() {
     }
 
-    public boolean isUseYn(){
+    public boolean isUseYn() {
         return "y".equalsIgnoreCase(this.getUseYn());
     }
 

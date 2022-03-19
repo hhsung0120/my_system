@@ -12,7 +12,8 @@ import javax.persistence.*;
 public class ChildCategoryEntity extends TimeEntity {
 
     @Column(name = "child_category_idx")
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String categoryName;
     private String useYn;
@@ -24,11 +25,11 @@ public class ChildCategoryEntity extends TimeEntity {
         this.id = idx;
     }
 
-    public Category toValueObject(){
+    public Category toValueObject() {
         return Category.entityToValueObject()
-                        .idx(id)
-                        .categoryName(categoryName)
-                        .build();
+                .idx(id)
+                .categoryName(categoryName)
+                .build();
     }
 }
 

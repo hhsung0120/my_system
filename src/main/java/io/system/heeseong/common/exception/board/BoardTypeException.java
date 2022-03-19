@@ -1,12 +1,13 @@
 package io.system.heeseong.common.exception.board;
 
-public class BoardTypeException extends RuntimeException{
+public class BoardTypeException extends RuntimeException {
 
-    public BoardTypeException(){
+    public BoardTypeException() {
     }
 
     private String message;
-    public BoardTypeException(String message){
+
+    public BoardTypeException(String message) {
         this.message = message;
     }
 

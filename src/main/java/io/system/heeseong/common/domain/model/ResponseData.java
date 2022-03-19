@@ -20,7 +20,7 @@ public class ResponseData {
         setResponseData(code, data);
     }
 
-    private void setResponseData(Code code, Object data){
+    private void setResponseData(Code code, Object data) {
         this.code = code.getCode();
         this.message = code.getMessage();
         this.data = data;

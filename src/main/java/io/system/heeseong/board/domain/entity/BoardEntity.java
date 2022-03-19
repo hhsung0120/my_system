@@ -14,7 +14,8 @@ import java.util.List;
 @Table(name = "board")
 public class BoardEntity extends TimeEntity {
 
-    @Id @Column(name = "board_idx")
+    @Id
+    @Column(name = "board_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
@@ -51,12 +52,13 @@ public class BoardEntity extends TimeEntity {
         this.tableName = tableName;
         this.boardType = boardType;
         this.title = title;
-        this.content = content;;
+        this.content = content;
+        ;
         this.parentCategoryEntity = new ParentCategoryEntity(parentCategoryIdx);
         this.childCategoryEntity = new ChildCategoryEntity(childCategoryIdx);
     }
 
-    public void setFileEntityList(List<FileEntity> fileList){
+    public void setFileEntityList(List<FileEntity> fileList) {
         this.fileEntityList = fileList;
     }
 

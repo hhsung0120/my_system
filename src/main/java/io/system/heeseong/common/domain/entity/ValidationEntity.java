@@ -10,7 +10,8 @@ import javax.persistence.*;
 @Table(name = "validation")
 public class ValidationEntity {
 
-    @Id @Column(name = "idx")
+    @Id
+    @Column(name = "idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
@@ -23,12 +24,12 @@ public class ValidationEntity {
     public ValidationEntity() {
     }
 
-    public Validation entityToValueObject(){
+    public Validation entityToValueObject() {
         return Validation.entityToValueObject()
-                    .idx(idx)
-                    .check(check)
-                    .use_yn(use_yn)
-                    .build();
+                .idx(idx)
+                .check(check)
+                .use_yn(use_yn)
+                .build();
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Code {
     public Code() {
     }
 
-    public String getKey(){
+    public String getKey() {
         return codeGroup + "_" + code;
     }
 

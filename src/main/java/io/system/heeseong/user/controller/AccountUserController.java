@@ -22,8 +22,8 @@ public class AccountUserController {
     final MenuService menuService;
 
     @GetMapping("/login")
-    public String login(){
-        if(accountUserService.isLogin()){
+    public String login() {
+        if (accountUserService.isLogin()) {
             return "redirect:/portfolio/main";
         }
 
@@ -32,19 +32,19 @@ public class AccountUserController {
 
     @ResponseBody
     @PostMapping("/login")
-    public ResponseData login(@ModelAttribute AccountUser accountUser){
+    public ResponseData login(@ModelAttribute AccountUser accountUser) {
         accountUserService.getAccountUser(accountUser);
         return new ResponseData(codeService.getCode("login_success"));
     }
 
     @ResponseBody
     @GetMapping("/{userIdx}")
-    public Long users(@PathVariable Long userIdx){
+    public Long users(@PathVariable Long userIdx) {
         return userIdx;
     }
 
     @GetMapping("/logout")
-    public ModelAndView logout(){
+    public ModelAndView logout() {
         accountUserService.logout();
         return new ModelAndView("redirect:/");
     }

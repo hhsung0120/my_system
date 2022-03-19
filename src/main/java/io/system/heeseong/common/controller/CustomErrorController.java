@@ -17,8 +17,8 @@ public class CustomErrorController implements ErrorController {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         HttpStatus httpStatus = HttpStatus.valueOf(Integer.valueOf(status.toString()));
         return new ModelAndView("/common/error")
-                    .addObject("code", status.toString())
-                    .addObject("message", httpStatus.getReasonPhrase())
-                    ;
+                .addObject("code", status.toString())
+                .addObject("message", httpStatus.getReasonPhrase())
+                ;
     }
 }

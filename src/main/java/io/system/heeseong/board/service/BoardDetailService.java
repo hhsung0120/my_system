@@ -37,19 +37,19 @@ public class BoardDetailService {
     final ChildCategoryRepository childCategoryRepository;
 
 
-    public List<Board> getBoardList(String boardType){
+    public List<Board> getBoardList(String boardType) {
         checkBoardType(boardType);
 
         return new ArrayList<>();
     }
 
     private void checkBoardType(String boardType) {
-        if(!boardTypeList.contains(boardType)){
+        if (!boardTypeList.contains(boardType)) {
             throw new BoardTypeException();
         }
     }
 
-    public Board getBoard(String boardId){
+    public Board getBoard(String boardId) {
 //        Optional<BoardEntity> boardEntity = boardRepository.findById(1L);
 //        List<FileEntity> fileEntity = fileRepository.findByBoardIdxAndTableName(1L, "BOARD");
 //        boardEntity.get().setFileEntityList(fileEntity);
@@ -60,23 +60,23 @@ public class BoardDetailService {
         return new Board();
     }
 
-    public List<Category> getParentCategoryList(){
+    public List<Category> getParentCategoryList() {
         List<ParentCategoryEntity> parentCategoryEntity =
                 Optional.ofNullable(parentCategoryRepository.findAll())
                         .orElse(new ArrayList<>());
 
         return parentCategoryEntity.stream()
-                                    .map( list -> list.toValueObject())
-                                    .collect(toList());
+                .map(list -> list.toValueObject())
+                .collect(toList());
     }
 
-    public List<Category> getChildCategoryList(){
+    public List<Category> getChildCategoryList() {
         List<ChildCategoryEntity> childCategoryEntity =
                 Optional.ofNullable(childCategoryRepository.findAllByUseYn("Y"))
                         .orElse(new ArrayList<>());
 
         return childCategoryEntity.stream()
-                .map( list -> list.toValueObject())
+                .map(list -> list.toValueObject())
                 .collect(toList());
     }
 
@@ -86,8 +86,8 @@ public class BoardDetailService {
                 Optional.ofNullable(boardTypeRepository.findAll())
                         .orElse(new ArrayList<>());
 
-        for(BoardTypeEntity boardTypeEntity : boardTypeEntityList){
-            if(!boardTypeEntity.isUseYn()){
+        for (BoardTypeEntity boardTypeEntity : boardTypeEntityList) {
+            if (!boardTypeEntity.isUseYn()) {
                 continue;
             }
             boardTypeList.add(boardTypeEntity.getBoardType());

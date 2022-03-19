@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Table(name = "account_user")
 public class AccountUserEntity {
 
-    @Id @Column(name = "user_idx")
+    @Id
+    @Column(name = "user_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
@@ -46,13 +47,13 @@ public class AccountUserEntity {
                 '}';
     }
 
-    public AccountUser entityToValueObject(){
+    public AccountUser entityToValueObject() {
         return AccountUser.entityToValueObject()
-                            .idx(idx)
-                            .email(email)
-                            .userName(userName)
-                            .status(status.toString())
-                            .role(role)
-                            .build();
+                .idx(idx)
+                .email(email)
+                .userName(userName)
+                .status(status.toString())
+                .role(role)
+                .build();
     }
 }

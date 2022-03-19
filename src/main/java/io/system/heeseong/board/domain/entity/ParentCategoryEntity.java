@@ -12,7 +12,8 @@ import javax.persistence.*;
 public class ParentCategoryEntity extends TimeEntity {
 
     @Column(name = "parent_category_idx", insertable = false)
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String categoryName;
     private String useYn;
@@ -24,7 +25,7 @@ public class ParentCategoryEntity extends TimeEntity {
         this.id = idx;
     }
 
-    public Category toValueObject(){
+    public Category toValueObject() {
         return Category.entityToValueObject()
                 .idx(id)
                 .categoryName(categoryName)

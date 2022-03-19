@@ -22,26 +22,26 @@ public class ValidationService {
 
     final ValidationRepository validationRepository;
 
-    public void setCheckList(){
+    public void setCheckList() {
         List<ValidationEntity> validationEntity = Optional.ofNullable(validationRepository.findAll())
-                                                .orElse(new ArrayList<>());
+                .orElse(new ArrayList<>());
 
         checkList = validationEntity.stream()
-                    .filter(list -> "y".equalsIgnoreCase(list.getUse_yn()))
-                    .map(list -> list.entityToValueObject())
-                    .collect(Collectors.toMap(Validation::getKey, Function.identity()));
+                .filter(list -> "y".equalsIgnoreCase(list.getUse_yn()))
+                .map(list -> list.entityToValueObject())
+                .collect(Collectors.toMap(Validation::getKey, Function.identity()));
     }
 
-    public Map<String, Validation> getCheckList(){
+    public Map<String, Validation> getCheckList() {
         return checkList;
     }
 
-    public boolean isLoginCheck(){
+    public boolean isLoginCheck() {
         return Optional.ofNullable(checkList.get("login"))
-                        .isPresent();
+                .isPresent();
     }
 
-    public boolean isMenuPermissionCheck(){
+    public boolean isMenuPermissionCheck() {
         return Optional.ofNullable(checkList.get("menuPermission"))
                 .isPresent();
     }

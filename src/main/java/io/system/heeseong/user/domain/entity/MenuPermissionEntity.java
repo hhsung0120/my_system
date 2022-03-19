@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Table(name = "menu_permission")
 public class MenuPermissionEntity extends TimeEntity {
 
-    @Id @Column(name = "menu_permission_idx")
+    @Id
+    @Column(name = "menu_permission_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
@@ -25,17 +26,17 @@ public class MenuPermissionEntity extends TimeEntity {
     public MenuPermissionEntity() {
     }
 
-    public Menu entityToValueObject(){
+    public Menu entityToValueObject() {
         return Menu.entityToValueObject()
-                    .idx(idx)
-                    .menuUri(menuEntity.getMenuUri())
-                    .menuName(menuEntity.getMenuName())
-                    .description(menuEntity.getDescription())
-                    .order(menuEntity.getOrder())
-                    .build();
+                .idx(idx)
+                .menuUri(menuEntity.getMenuUri())
+                .menuName(menuEntity.getMenuName())
+                .description(menuEntity.getDescription())
+                .order(menuEntity.getOrder())
+                .build();
     }
 
-    public boolean isUseYn(){
+    public boolean isUseYn() {
         return "y".equalsIgnoreCase(menuEntity.getUseYn());
     }
 

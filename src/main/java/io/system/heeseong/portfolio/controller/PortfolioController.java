@@ -10,17 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
 public class PortfolioController {
 
     @GetMapping
-    public String index(){
+    public String index() {
         return "redirect:/portfolio/main";
     }
 
     @GetMapping("/main")
-    public String main(){
+    public String main() {
         return "/portfolio/list";
     }
 
     @GetMapping("/form")
-    public ModelAndView form(){
+    public ModelAndView form() {
         return new ModelAndView("/board/form")
                 .addObject("boardType", "portfolio");
     }

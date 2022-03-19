@@ -10,7 +10,8 @@ import javax.persistence.*;
 @Table(name = "file")
 public class FileEntity extends TimeEntity {
 
-    @Id @Column(name = "file_idx")
+    @Id
+    @Column(name = "file_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 

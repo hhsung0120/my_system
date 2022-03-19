@@ -12,7 +12,8 @@ import javax.persistence.*;
 @Table(name = "role")
 public class RoleEntity extends TimeEntity {
 
-    @Id @Column(name = "role_idx")
+    @Id
+    @Column(name = "role_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
@@ -28,12 +29,12 @@ public class RoleEntity extends TimeEntity {
     public RoleEntity() {
     }
 
-    public Role entityToValueObject(){
+    public Role entityToValueObject() {
         return Role.entityToValueObject()
-                    .idx(idx)
-                    .roleName(roleName)
-                    .description(description)
-                    .useYn(useYn)
-                    .build();
+                .idx(idx)
+                .roleName(roleName)
+                .description(description)
+                .useYn(useYn)
+                .build();
     }
 }

@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer{
+public class WebConfig implements WebMvcConfigurer {
 
     @Value("${path.web-access-path}")
     String webAccessPath;
@@ -31,32 +31,32 @@ public class WebConfig implements WebMvcConfigurer{
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(webAccessPath)
-                .addResourceLocations("file:///"+fileUploadPath+"/")
-                ;
+                .addResourceLocations("file:///" + fileUploadPath + "/")
+        ;
     }
-	
+
     // 인덱스 페이지 설정
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController("/","/users/login");
+        registry.addRedirectViewController("/", "/users/login");
     }
 
     @Bean
-    CheckLoginInterceptor checkLoginInterceptor(){
+    CheckLoginInterceptor checkLoginInterceptor() {
         return new CheckLoginInterceptor();
     }
 
     @Bean
-    MenuPermissionCheckInterceptor menuPermissionCheckInterceptor(){
+    MenuPermissionCheckInterceptor menuPermissionCheckInterceptor() {
         return new MenuPermissionCheckInterceptor();
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(checkLoginInterceptor()).order(0)
+        registry.addInterceptor(checkLoginInterceptor()).order(0)
                 .excludePathPatterns(resourcesList)
                 .addPathPatterns("/**")
-		;
+        ;
 
         registry.addInterceptor(menuPermissionCheckInterceptor())
                 .excludePathPatterns(resourcesList)

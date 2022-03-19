@@ -32,15 +32,15 @@ public class Files {
         this.createUser = createUser;
     }
 
-    public FileEntity toEntity(Long boardIdx, String tableName){
+    public FileEntity toEntity(Long boardIdx, String tableName) {
         return FileEntity.fileInsert()
-                            .uploadPath(uploadPath)
-                            .originalFileName(originalFileName)
-                            .uuid(uuid)
-                            .extension(extension)
-                            .boardIdx(boardIdx)
-                            .tableName(tableName)
-                            .createUser(createUser)
-                            .build();
+                .uploadPath(uploadPath)
+                .originalFileName(originalFileName)
+                .uuid(uuid)
+                .extension(extension)
+                .boardIdx(boardIdx)
+                .tableName(tableName)
+                .createUser(createUser)
+                .build();
     }
 }

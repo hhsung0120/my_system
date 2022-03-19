@@ -2,29 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="/common/fragment::head"/>
 <script>
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
-            appId      : '1511139339243492',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v12.0',
-            appsecret_proof : 'e280428f2bf047ed92b855bb246ff4c5'
+            appId: '1511139339243492',
+            cookie: true,
+            xfbml: true,
+            version: 'v12.0',
+            appsecret_proof: 'e280428f2bf047ed92b855bb246ff4c5'
         });
 
         FB.AppEvents.logPageView();
 
     };
 
-    (function(d, s, id){
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
     function checkLoginState() {               // Called when a person is finished with the Login Button.
-        FB.getLoginStatus(function(response) {   // See the onlogin handler
+        FB.getLoginStatus(function (response) {   // See the onlogin handler
             statusChangeCallback(response);
         });
     }
@@ -40,7 +43,7 @@
     }
 
     function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-        FB.api('/me', function(response) {
+        FB.api('/me', function (response) {
             console.log(JSON.stringify(response));
         });
     }

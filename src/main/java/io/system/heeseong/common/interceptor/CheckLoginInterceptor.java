@@ -15,28 +15,28 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class CheckLoginInterceptor implements AsyncHandlerInterceptor {
 
-	@Autowired
-	private AccountUserService accountUserService;
+    @Autowired
+    private AccountUserService accountUserService;
 
-	@Autowired
-	private ValidationService validationService;
+    @Autowired
+    private ValidationService validationService;
 
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws Exception {
 
-		if(!validationService.isLoginCheck()){
-			return true;
-		}
+        if (!validationService.isLoginCheck()) {
+            return true;
+        }
 
-		AccountUser accountUser = accountUserService.getSessionAccountUser();
+        AccountUser accountUser = accountUserService.getSessionAccountUser();
 
-		if(accountUser == null){
-			String contextPath = request.getContextPath();
-			response.sendRedirect(contextPath+"/");
-			return false;
-		}
+        if (accountUser == null) {
+            String contextPath = request.getContextPath();
+            response.sendRedirect(contextPath + "/");
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 }

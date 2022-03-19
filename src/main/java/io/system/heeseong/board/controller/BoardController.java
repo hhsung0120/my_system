@@ -29,44 +29,44 @@ public class BoardController {
     final CodeService codeService;
 
     @GetMapping
-    public ModelAndView list(@RequestParam(required = false, defaultValue = "facebook") String boardType){
+    public ModelAndView list(@RequestParam(required = false, defaultValue = "facebook") String boardType) {
         //TODO 서비스에서 겟 할때 보드타입 검사하기
         boardDetailService.getBoardList(boardType);
         return new ModelAndView("/board/list")
-                    .addObject("boardType", boardType)
-                    ;
+                .addObject("boardType", boardType)
+                ;
     }
 
     @GetMapping("/form/{boardType}")
-    public ModelAndView form(@PathVariable String boardType){
+    public ModelAndView form(@PathVariable String boardType) {
         return new ModelAndView("/board/form")
-                    .addObject("parentCategoryList", boardDetailService.getParentCategoryList())
-                    .addObject("childCategoryList", boardDetailService.getChildCategoryList())
-                    .addObject("boardType", boardType)
-                    ;
+                .addObject("parentCategoryList", boardDetailService.getParentCategoryList())
+                .addObject("childCategoryList", boardDetailService.getChildCategoryList())
+                .addObject("boardType", boardType)
+                ;
     }
 
     @ResponseBody
     @PostMapping("/form")
-    public ResponseData save(@ModelAttribute Board board){
+    public ResponseData save(@ModelAttribute Board board) {
         boardMainService.saveBoard(board);
         return new ResponseData(codeService.getCode("board_success"));
     }
 
     @GetMapping("/{boardId}")
-    public ModelAndView getBoard(@PathVariable String boardId){
+    public ModelAndView getBoard(@PathVariable String boardId) {
         log.info("boardId {}", boardId);
         boardDetailService.getBoard(boardId);
         return new ModelAndView("/board/list");
     }
 
     @PostMapping("/smartEditorUpload")
-    public String smartEditorUpload(StandardMultipartHttpServletRequest request){
+    public String smartEditorUpload(StandardMultipartHttpServletRequest request) {
         Files files = boardMainService.fileUpload(request.getFile("upload"));
         String returnData = new StringBuilder()
                 .append(request.getParameter("callback"))
                 .append("?callback_func=" + request.getParameter("callback_func"))
-                .append("&bNewLine=true&sFileName="+ files.getUuid() + "&sFileURL=/upload/board/" + files.getUuid() + "." + files.getExtension())
+                .append("&bNewLine=true&sFileName=" + files.getUuid() + "&sFileURL=/upload/board/" + files.getUuid() + "." + files.getExtension())
                 .toString();
 
         return "redirect:" + returnData;
@@ -74,7 +74,7 @@ public class BoardController {
 
     @ResponseBody
     @GetMapping("/test")
-    public String test(){
+    public String test() {
         List<Map<String, Object>> listInMap = new ArrayList<>();
         Map<String, Object> data1 = new HashMap<>();
         data1.put("123", "123");
@@ -116,7 +116,6 @@ public class BoardController {
         mpaInList.put("key2", listInBoard);
 
 
-
         System.out.println("리스트 안에 맵 =>" + listInMap);
         System.out.println("리스트 안에 보드 객체 =>" + listInBoard);
         System.out.println("맵 안에 List<Object> =>" + data);
@@ -125,7 +124,6 @@ public class BoardController {
 
         return "test";
     }
-
 
 
 }

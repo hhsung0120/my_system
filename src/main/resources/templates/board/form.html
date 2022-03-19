@@ -5,11 +5,11 @@
 <div class="container">
     <div th:include="/common/fragment::nav"/>
     <div id="data_wrap" class="col-md-8">
-        <form id="dataForm" name="dataForm" enctype="multipart/form-data" />
-<!--        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
-        <input type="hidden" id="boardType" name="boardType" th:value="${boardType}" />
-        <input type="hidden" id="parentCategoryIdx" name="parentCategoryIdx" th:value="0" />
-        <input type="hidden" id="childCategoryIdx" name="childCategoryIdx" th:value="0" />
+        <form id="dataForm" name="dataForm" enctype="multipart/form-data"/>
+        <!--        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+        <input type="hidden" id="boardType" name="boardType" th:value="${boardType}"/>
+        <input type="hidden" id="parentCategoryIdx" name="parentCategoryIdx" th:value="0"/>
+        <input type="hidden" id="childCategoryIdx" name="childCategoryIdx" th:value="0"/>
 
         <table class="table">
             <colgroup>
@@ -21,7 +21,8 @@
                 <th>1차 카테고리</th>
                 <td>
                     <div class="btn-group">
-                        <button type="button" id="parentCategoryText" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <button type="button" id="parentCategoryText" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-expanded="false">
                             action <span class="caret"></span>
                         </button>
                         <ul id="parentCategoryList" class="dropdown-menu" role="menu">
@@ -36,7 +37,8 @@
                 <th>2차 카테고리</th>
                 <td>
                     <div class="btn-group">
-                        <button type="button" id="childCategoryText" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <button type="button" id="childCategoryText" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-expanded="false">
                             action <span class="caret"></span>
                         </button>
                         <ul id="childCategoryList" class="dropdown-menu" role="menu">
@@ -54,13 +56,13 @@
             <tr>
                 <th>내용</th>
                 <td>
-                    <textarea id="content" class="form-control display_none" name="content" ></textarea>
+                    <textarea id="content" class="form-control display_none" name="content"></textarea>
                 </td>
             </tr>
             <tr>
-                <th>파일 </th>
+                <th>파일</th>
                 <td class="text-left">
-                    <input type="file" name="files" multiple="multiple" />
+                    <input type="file" name="files" multiple="multiple"/>
                     <div th:each="row:${fileList}" style="padding-top: 10px;" th:id="|removeTarget${row.fileSeqNo}|">
                         <a th:text="${row.orgFileNm}" th:onclick="|fileDown(${row.fileSeqNo})|"></a>
                         <a th:onclick="|removeFile(${row.fileSeqNo})|">[삭제]</a>
@@ -72,7 +74,8 @@
         </form>
         <div class="text-center">
             <button type="button" class="btn btn-default left_right_margin-5" onclick="goList();">취소</button>
-            <button type="button" id="saveButton" class="btn btn-default left_right_margin-5" onclick="goSave();">저장</button>
+            <button type="button" id="saveButton" class="btn btn-default left_right_margin-5" onclick="goSave();">저장
+            </button>
         </div>
     </div><!-- data_wrap -->
 </div> <!-- /container -->
@@ -82,55 +85,55 @@
     setParentCategoryIdx($('#parentCategoryList > li:first'));
     setChildCategoryIdx($('#childCategoryList > li:first'));
 
-    var goList = function(){
-        location.href="/boards";
+    var goList = function () {
+        location.href = "/boards";
     }
 
-    var goSave = function(){
-        oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
+    var goSave = function () {
+        oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 
         var editorCont = $.trim($("#content").val());
-        if(editorCont.length == 0 || editorCont=='&nbsp;' || editorCont=='<p>&nbsp;</p>'){
+        if (editorCont.length == 0 || editorCont == '&nbsp;' || editorCont == '<p>&nbsp;</p>') {
             alert("글 내용을 입력해주세요.");
             oEditors.getById["content"].exec("FOCUS");
             return false;
         }
 
         $('#saveButton').hide();
-        if(confirm("저장 하시겠습니까?")) {
+        if (confirm("저장 하시겠습니까?")) {
             $.ajax({
-                url : "/boards/form"
-                , method : "POST"
-                , dataType : 'json'
+                url: "/boards/form"
+                , method: "POST"
+                , dataType: 'json'
                 , processData: false
                 , contentType: false
-                , data : new FormData($('#dataForm')[0])
-                , success : function(data){
+                , data: new FormData($('#dataForm')[0])
+                , success: function (data) {
                     $('#saveButton').hide();
-                    if(data.code == 'success'){
+                    if (data.code == 'success') {
                         alert(data.message);
                         location.href = "/boards"
-                    }else{
+                    } else {
                         alert(data.message);
                     }
-                } ,error:function(x,error){
+                }, error: function (x, error) {
                     console.log(x);
                     console.log(error);
                     alert("처리중 오류가 발생했습니다.");
                 }
             });
-        }else{
+        } else {
             $('#saveButton').show();
         }
     }
 
-    function setParentCategoryIdx(obj){
+    function setParentCategoryIdx(obj) {
         let text = $(obj).children('a').text();
         $("#parentCategoryText").html(text + '<span class="caret"></span>');
         $("#parentCategoryIdx").val($(obj).attr("value"));
     }
 
-    function setChildCategoryIdx(obj){
+    function setChildCategoryIdx(obj) {
         let text = $(obj).children('a').text();
         $("#childCategoryText").html(text + '<span class="caret"></span>');
         $("#childCategoryIdx").val($(obj).attr("value"));

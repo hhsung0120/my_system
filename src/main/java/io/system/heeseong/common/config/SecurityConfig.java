@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private CustomAuthenticationProvider customAuthenticationProvider;
 
     @Override
-    public void configure(WebSecurity web){
+    public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/js/**", "/css/**", "/images/**", "/smartEditor/**");
     }
 
@@ -28,11 +28,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable()
                 .and()
-                    .authorizeRequests()
-                    .antMatchers("/**").permitAll()
+                .authorizeRequests()
+                .antMatchers("/**").permitAll()
                 .and()
-                    .csrf()
-                    .disable();
+                .csrf()
+                .disable();
 //        http.authorizeRequests()
 //                //.antMatchers("/admin/**").hasRole("ADMIN")
 //                .antMatchers("/**").permitAll()

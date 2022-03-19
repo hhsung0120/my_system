@@ -1,0 +1,85 @@
+2021-11-03 23:21:43.727  INFO 19336 --- [restartedMain] io.system.heeseong.HeeseongApplication   : Starting HeeseongApplication using Java 11.0.10 on HOME with PID 19336 (D:\workspace\system\build\classes\java\main started by Administrator in D:\workspace\system)
+2021-11-03 23:21:43.781  INFO 19336 --- [restartedMain] io.system.heeseong.HeeseongApplication   : The following profiles are active: dev
+2021-11-03 23:21:43.834  INFO 19336 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-11-03 23:21:43.834  INFO 19336 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-11-03 23:21:44.983  INFO 19336 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-03 23:21:45.041  INFO 19336 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 4 JPA repository interfaces.
+2021-11-03 23:21:45.744  INFO 19336 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 58080 (http)
+2021-11-03 23:21:45.771  INFO 19336 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-03 23:21:45.771  INFO 19336 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-11-03 23:21:45.872  INFO 19336 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-03 23:21:45.872  INFO 19336 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2037 ms
+2021-11-03 23:21:46.108  INFO 19336 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-03 23:21:46.175  INFO 19336 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-03 23:21:46.319  INFO 19336 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-03 23:21:46.428  INFO 19336 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : Hikari - Starting...
+2021-11-03 23:21:47.229  INFO 19336 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : Hikari - Start completed.
+2021-11-03 23:21:47.274  INFO 19336 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-11-03 23:21:47.927  INFO 19336 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-03 23:21:47.933  INFO 19336 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-03 23:21:48.537  INFO 19336 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-11-03 23:21:48.537  INFO 19336 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/css/**'] with []
+2021-11-03 23:21:48.537  INFO 19336 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/images/**'] with []
+2021-11-03 23:21:48.537  INFO 19336 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/smartEditor/**'] with []
+2021-11-03 23:21:48.555  INFO 19336 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@78ce9d37, org.springframework.security.web.context.SecurityContextPersistenceFilter@59920f9, org.springframework.security.web.header.HeaderWriterFilter@54f9e8b5, org.springframework.security.web.csrf.CsrfFilter@3eebe222, org.springframework.security.web.authentication.logout.LogoutFilter@1d346a69, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5c2cdb4a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3085be3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2fe77854, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4202ffef, org.springframework.security.web.session.SessionManagementFilter@5ab76ee5, org.springframework.security.web.access.ExceptionTranslationFilter@34819ea2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@324b54e3]
+2021-11-03 23:21:48.880  INFO 19336 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-11-03 23:21:48.910  INFO 19336 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 58080 (http) with context path ''
+2021-11-03 23:21:48.936  INFO 19336 --- [restartedMain] io.system.heeseong.HeeseongApplication   : Started HeeseongApplication in 5.957 seconds (JVM running for 7.758)
+2021-11-03 23:27:11.792  INFO 19336 --- [http-nio-58080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-03 23:27:11.792  INFO 19336 --- [http-nio-58080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-11-03 23:27:11.793  INFO 19336 --- [http-nio-58080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-11-03 23:27:12.445  WARN 19336 --- [http-nio-58080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [381] milliseconds.
+2021-11-03 23:30:47.741  INFO 16784 --- [restartedMain] io.system.heeseong.HeeseongApplication   : Starting HeeseongApplication using Java 11.0.10 on HOME with PID 16784 (D:\workspace\system\build\classes\java\main started by Administrator in D:\workspace\system)
+2021-11-03 23:30:47.743  INFO 16784 --- [restartedMain] io.system.heeseong.HeeseongApplication   : The following profiles are active: dev
+2021-11-03 23:30:47.767  INFO 16784 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-11-03 23:30:47.767  INFO 16784 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-11-03 23:30:48.223  INFO 16784 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-03 23:30:48.271  INFO 16784 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 4 JPA repository interfaces.
+2021-11-03 23:30:48.659  INFO 16784 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 12344 (http)
+2021-11-03 23:30:48.665  INFO 16784 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-03 23:30:48.665  INFO 16784 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-11-03 23:30:48.730  INFO 16784 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-03 23:30:48.730  INFO 16784 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 962 ms
+2021-11-03 23:30:48.837  INFO 16784 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-03 23:30:48.861  INFO 16784 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-03 23:30:48.925  INFO 16784 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-03 23:30:48.977  INFO 16784 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : Hikari - Starting...
+2021-11-03 23:30:49.291  INFO 16784 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : Hikari - Start completed.
+2021-11-03 23:30:49.299  INFO 16784 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-11-03 23:30:49.669  INFO 16784 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-03 23:30:49.675  INFO 16784 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-03 23:30:50.039  INFO 16784 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-11-03 23:30:50.039  INFO 16784 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/css/**'] with []
+2021-11-03 23:30:50.039  INFO 16784 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/images/**'] with []
+2021-11-03 23:30:50.039  INFO 16784 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/smartEditor/**'] with []
+2021-11-03 23:30:50.058  INFO 16784 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@53fe4df7, org.springframework.security.web.context.SecurityContextPersistenceFilter@6cf82aed, org.springframework.security.web.header.HeaderWriterFilter@1119904f, org.springframework.security.web.csrf.CsrfFilter@6a4b1757, org.springframework.security.web.authentication.logout.LogoutFilter@66faab91, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@51e25033, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4a42c329, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@ba11270, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@10deec73, org.springframework.security.web.session.SessionManagementFilter@1b930be, org.springframework.security.web.access.ExceptionTranslationFilter@16637aa, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@297d069a]
+2021-11-03 23:30:50.296  INFO 16784 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-11-03 23:30:50.324  INFO 16784 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 12344 (http) with context path ''
+2021-11-03 23:30:50.332  INFO 16784 --- [restartedMain] io.system.heeseong.HeeseongApplication   : Started HeeseongApplication in 2.881 seconds (JVM running for 3.793)
+2021-11-03 23:31:14.405  INFO 33700 --- [restartedMain] io.system.heeseong.HeeseongApplication   : Starting HeeseongApplication using Java 11.0.10 on HOME with PID 33700 (D:\workspace\system\build\classes\java\main started by Administrator in D:\workspace\system)
+2021-11-03 23:31:14.406  INFO 33700 --- [restartedMain] io.system.heeseong.HeeseongApplication   : The following profiles are active: dev
+2021-11-03 23:31:14.430  INFO 33700 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-11-03 23:31:14.430  INFO 33700 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-11-03 23:31:14.840  INFO 33700 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-03 23:31:14.883  INFO 33700 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 4 JPA repository interfaces.
+2021-11-03 23:31:15.203  INFO 33700 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 58080 (http)
+2021-11-03 23:31:15.209  INFO 33700 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-03 23:31:15.210  INFO 33700 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-11-03 23:31:15.277  INFO 33700 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-03 23:31:15.277  INFO 33700 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 846 ms
+2021-11-03 23:31:15.387  INFO 33700 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-03 23:31:15.411  INFO 33700 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-03 23:31:15.477  INFO 33700 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-03 23:31:15.529  INFO 33700 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : Hikari - Starting...
+2021-11-03 23:31:15.825  INFO 33700 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : Hikari - Start completed.
+2021-11-03 23:31:15.834  INFO 33700 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2021-11-03 23:31:16.204  INFO 33700 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-03 23:31:16.209  INFO 33700 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-03 23:31:16.582  INFO 33700 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/js/**'] with []
+2021-11-03 23:31:16.583  INFO 33700 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/css/**'] with []
+2021-11-03 23:31:16.583  INFO 33700 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/images/**'] with []
+2021-11-03 23:31:16.583  INFO 33700 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/smartEditor/**'] with []
+2021-11-03 23:31:16.601  INFO 33700 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ef4da5, org.springframework.security.web.context.SecurityContextPersistenceFilter@ae4802f, org.springframework.security.web.header.HeaderWriterFilter@79ab1e7f, org.springframework.security.web.csrf.CsrfFilter@47382d44, org.springframework.security.web.authentication.logout.LogoutFilter@5352f485, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@72c0c1c2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44b20f8c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@68c30de, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7555428b, org.springframework.security.web.session.SessionManagementFilter@9068f56, org.springframework.security.web.access.ExceptionTranslationFilter@25c3290a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@303dedf2]
+2021-11-03 23:31:16.862  INFO 33700 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-11-03 23:31:16.891  INFO 33700 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 58080 (http) with context path ''
+2021-11-03 23:31:16.900  INFO 33700 --- [restartedMain] io.system.heeseong.HeeseongApplication   : Started HeeseongApplication in 2.759 seconds (JVM running for 3.63)

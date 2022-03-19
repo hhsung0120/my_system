@@ -24,12 +24,12 @@ public class LoginService implements UserDetailsService {
         return null;
     }
 
-    public AccountUser getAccountUser(String email, String password){
+    public AccountUser getAccountUser(String email, String password) {
         AccountUserEntity accountUserEntity =
                 Optional.ofNullable(accountUserRepository.findByEmail(email))
                         .orElseThrow(() -> new LoginException(LoginException.Message.LOGIN_FAIL_EXCEPTION));
 
-        if(!new BCryptPasswordEncoder().matches(password, accountUserEntity.getPassword())){
+        if (!new BCryptPasswordEncoder().matches(password, accountUserEntity.getPassword())) {
             throw new LoginException(LoginException.Message.LOGIN_FAIL_EXCEPTION);
         }
 

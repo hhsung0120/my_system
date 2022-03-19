@@ -8,31 +8,37 @@
     <input type="button" id="" name="" value="login" onclick="checkLoginStatus()"/>
 </div>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v12.0&appId=961694458024696&autoLogAppEvents=1" nonce="1gHG0nsH"></script>
-<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v12.0&appId=961694458024696&autoLogAppEvents=1"
+        nonce="1gHG0nsH"></script>
+<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default"
+     data-auto-logout-link="false" data-use-continue-as="false"></div>
 <script>
     alert("init")
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
-            appId      : '1511139339243492',
-            xfbml      : true,
-            version    : 'v12.0'
+            appId: '1511139339243492',
+            xfbml: true,
+            version: 'v12.0'
         });
         FB.AppEvents.logPageView();
     };
 
-    (function(d, s, id){
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
 
 <script>
-    checkLogin = function(){
-        FB.login(function(response) {
+    checkLogin = function () {
+        FB.login(function (response) {
             if (response.status === 'connected') {
                 // Logged into your webpage and Facebook.
                 alert(1)
@@ -42,15 +48,15 @@
         });
     }
 
-    checkLogout = function(){
-        FB.logout(function(response) {
+    checkLogout = function () {
+        FB.logout(function (response) {
             console.log(response);
         });
     }
 
 
-    checkLoginStatus = function(){
-        FB.getLoginStatus(function(response) {
+    checkLoginStatus = function () {
+        FB.getLoginStatus(function (response) {
             statusChangeCallback(response);
         });
     }

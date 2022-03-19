@@ -2,22 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="/common/fragment::head"/>
 <script>
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
-            appId      : '1511139339243492',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v12.0'
+            appId: '1511139339243492',
+            cookie: true,
+            xfbml: true,
+            version: 'v12.0'
         });
 
         FB.AppEvents.logPageView();
 
     };
 
-    (function(d, s, id){
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
@@ -30,13 +33,13 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 </div>
 <div>
-    <input type="button" id="" name="" value="로그인 체크" onclick="loginCheck()" />
-    <input type="button" id="" name="" value="글쓰기" onclick="createFeed()" />
+    <input type="button" id="" name="" value="로그인 체크" onclick="loginCheck()"/>
+    <input type="button" id="" name="" value="글쓰기" onclick="createFeed()"/>
 
 </div>
 <script>
 
-    function loginCheck(){
+    function loginCheck() {
         FB.login(
             function (login_result) {
                 if (login_result.status === 'connected') {
@@ -47,14 +50,14 @@
                     alert('페이스북 API 호출에 실패했습니다');
                 }
             },
-            { scope: 'publish_pages,manage_pages' }
+            {scope: 'publish_pages,manage_pages'}
         );
     }
 
     function getFbAccessToken() {
         FB.api('/111885793685883/'
             , 'GET'
-            , { fields: 'access_token' }
+            , {fields: 'access_token'}
             , function (token_result) {
                 console.log(token_result);
                 postFbPage(token_result);
@@ -66,7 +69,8 @@
         FB.api(
             '/111885793685883/feed'
             , 'POST'
-            , { access_token: token_result.access_token
+            , {
+                access_token: token_result.access_token
                 , message: '내용'
                 , link: '링크 걸 주소'
                 , picture: '링크 이미지'
@@ -83,7 +87,7 @@
     }
 
     function checkLoginState() {               // Called when a person is finished with the Login Button.
-        FB.getLoginStatus(function(response) {   // See the onlogin handler
+        FB.getLoginStatus(function (response) {   // See the onlogin handler
             statusChangeCallback(response);
         });
     }

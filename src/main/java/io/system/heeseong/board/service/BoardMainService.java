@@ -32,22 +32,22 @@ public class BoardMainService {
     private String uploadPath;
 
     @Transactional
-    public void saveBoard(Board board){
-        if(board.getIdx() == null){
+    public void saveBoard(Board board) {
+        if (board.getIdx() == null) {
             insertBoard(board);
-        }else{
+        } else {
 
         }
     }
 
-    private void insertBoard(Board board){
+    private void insertBoard(Board board) {
         board.setCreateUser(accountUserService.getSessionAccountUser().getEmail());
 
         Long boardIdx = Optional.ofNullable(boardRepository.save(board.toEntity()).getIdx())
-                           .orElseThrow(BoardException::new);
+                .orElseThrow(BoardException::new);
 
-        for(MultipartFile files : board.getFiles()){
-            if(!files.isEmpty()){
+        for (MultipartFile files : board.getFiles()) {
+            if (!files.isEmpty()) {
                 Files file = fileUpload(files);
                 file.setCreateUser(board.getCreateUser());
                 fileRepository.save(file.toEntity(boardIdx, TableEnum.BOARD.getValue()));
@@ -55,7 +55,7 @@ public class BoardMainService {
         }
     }
 
-    public Files fileUpload(MultipartFile files){
+    public Files fileUpload(MultipartFile files) {
         return FileUtil.executeFileUpload(files, uploadPath + "/board/");
     }
 }

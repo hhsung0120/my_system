@@ -89,7 +89,7 @@ public class CryptoUtil {
     /*
      * 입력 패스워드 값 암호화 (단방향)
      */
-    public static String encryptPassword(String password){
+    public static String encryptPassword(String password) {
         return new BCryptPasswordEncoder().encode(password);
     }
 }

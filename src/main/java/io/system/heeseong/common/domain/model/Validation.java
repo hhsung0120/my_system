@@ -15,7 +15,7 @@ public class Validation {
     public Validation() {
     }
 
-    public String getKey(){
+    public String getKey() {
         return check;
     }
 

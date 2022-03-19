@@ -20,7 +20,7 @@ public class ReloadController {
     final CodeService codeService;
 
     @GetMapping("/validation/reload")
-    public Map<String, Object> reloadValidation(){
+    public Map<String, Object> reloadValidation() {
         validationService.setCheckList();
 
         Map<String, Object> response = new LinkedHashMap<>();
@@ -32,7 +32,7 @@ public class ReloadController {
     }
 
     @GetMapping("/code/reload")
-    public Map<String, Object> reloadCode(){
+    public Map<String, Object> reloadCode() {
         codeService.setCodeList();
 
         Map<String, Object> response = new LinkedHashMap<>();

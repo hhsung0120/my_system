@@ -36,5 +36,5 @@ logging:
       max-file-size: 10MB
 
 path:
-  web-access-path : /upload/**
+  web-access-path: /upload/**
   default-upload-path: D:/upload/system

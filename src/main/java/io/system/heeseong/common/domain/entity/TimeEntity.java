@@ -28,7 +28,7 @@ public class TimeEntity {
     public TimeEntity() {
     }
 
-    public void setCreateUserAndTime(String createUser){
+    public void setCreateUserAndTime(String createUser) {
         this.createUser = createUser;
         this.createDate = LocalDateTime.now();
         this.updateUser = createUser;

@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Table(name = "code")
 public class CodeEntity extends TimeEntity {
 
-    @Id @Column(name = "code_idx")
+    @Id
+    @Column(name = "code_idx")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
@@ -30,13 +31,13 @@ public class CodeEntity extends TimeEntity {
     public CodeEntity() {
     }
 
-    public Code entityToValueObject(){
+    public Code entityToValueObject() {
         return Code.entityToValueObject()
-                    .codeGroup(codeGroup)
-                    .code(code)
-                    .message(message)
-                    .useYn(use_yn)
-                    .build();
+                .codeGroup(codeGroup)
+                .code(code)
+                .message(message)
+                .useYn(use_yn)
+                .build();
     }
 
     @Override
