@@ -7,8 +7,8 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://172.16.7.10:3306/test
-    username: root
-    password: zjspr11!!
+    username: 
+    password: 
     hikari:
       poolName: Hikari
       maximum-pool-size: 10
